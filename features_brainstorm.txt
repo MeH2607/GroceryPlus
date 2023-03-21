@@ -12,3 +12,10 @@ Extra features:
 Show calories for recipe (per person?)
 Change amount of persons for recipe
 When shopping: checking off groceries
+
+
+Pages:
+Recipes
+Ingredients (with categories?)
+Create recipe
+Create ingredient 
