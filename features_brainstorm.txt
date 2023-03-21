@@ -12,6 +12,7 @@ Extra features:
 Show calories for recipe (per person?)
 Change amount of persons for recipe
 When shopping: checking off groceries
+Copy/duplicate old list
 
 
 Pages:
