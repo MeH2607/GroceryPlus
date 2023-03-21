@@ -19,3 +19,5 @@ Recipes
 Ingredients (with categories?)
 Create recipe
 Create ingredient 
+Create grocerylist
+View grocerylist
