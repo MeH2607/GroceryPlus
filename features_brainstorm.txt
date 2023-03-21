@@ -1,0 +1,9 @@
+
+Create grocerylist
+Collaborative grocerylist
+Scroll ingredients
+Create ingredient
+Remove ingredient from grocery list
+Add ingredient to grocery list
+Create recipe
+Add recipe to grocery list (all ingredients added)
