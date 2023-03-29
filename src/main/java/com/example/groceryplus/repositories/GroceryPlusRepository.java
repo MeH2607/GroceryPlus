@@ -16,7 +16,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
     @Override
     public List<RecipeDTO> getRecipeDTOs(){
         List<RecipeDTO> list = new ArrayList<>();
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "Tor42Am41")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "mohamed")) {
             String SQL = "select * from recipes join recipes_has_groceries using (recipe_name)";
 
             PreparedStatement ps = conn.prepareStatement(SQL);
