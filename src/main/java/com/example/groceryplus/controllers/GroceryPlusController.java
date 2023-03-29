@@ -18,38 +18,21 @@ public class GroceryPlusController {
     public String index(){
         return "index";
     }
-    @GetMapping("allRecipes")
+    @GetMapping("all_recipes")
     public String allRecipes(){
-        return "allRecipes";
+        return "all_recipes";
     }
-    @GetMapping("allGroceries")
+    @GetMapping("all_groceries")
     public String allGroceries(){
-        return "allGroceries";
+        return "all_groceries";
     }
-    @GetMapping("shoppingList")
+    @GetMapping("shopping_list")
     public String shoppingList(){
-        return "shoppingList";
+        return "shopping_list";
     }
-    @PostMapping("addRecipe")
+    @PostMapping("create_new_recipe")
     public String addRecipe(){
-        return "addRecipe";
+        return "create_new_recipe";
     }
-    @PostMapping("addGrocery")
-    public String addGrocery(){
-        return "addGrocery";
-    }
-    @PostMapping("deleteRecipe")
-    public String deleteRecipe(){
-        return "deleteRecipe";
-    }
-    @PostMapping("deleteGrocery")
-    public String deleteGrocery(){
-        return "deleteGrocery";
-    }
-    @PostMapping("updateRecipe")
-    public String updateRecipe(){
-        return "updateRecipe";
-    }
-
 
 }
