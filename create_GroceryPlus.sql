@@ -4,7 +4,7 @@ USE GroceryPlus;
 
 CREATE TABLE Groceries(
   grocery_name VARCHAR(255) PRIMARY KEY,
-  amount INT NULL,
+  amount Double NULL,
   unit VARCHAR(255)
   );
 

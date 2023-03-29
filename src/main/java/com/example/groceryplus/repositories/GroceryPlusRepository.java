@@ -6,9 +6,8 @@ import com.example.groceryplus.services.GroceryPlusException;
 import com.example.groceryplus.repositories.util.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("GroceryPlusDB")
@@ -17,7 +16,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
     //TODO Asger: Implement this class
     @Override
-    public List<Recipe> getAllRecipes(){
+    public List<Recipe> getAllRecipes() {
 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "Tor42Am41")) {
             String SQL = "select * from recipe";
@@ -37,23 +36,26 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
     @Override
     public List<Grocery> getAllGroceries() {
+        List<Grocery> groceryList = new ArrayList();
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "Tor42Am41")) {
-            String SQL = "SELECT * FROM Grocery";
+            String SQL = "SELECT * FROM Groceries";
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
-                String name = rs.getString();
-
+                String name = rs.getString("grocery_name");
+                double amount = rs.getDouble("amount");
+                String unit = rs.getString("unit");
+                groceryList.add(new Grocery(name, amount, unit));
             }
 
-
-            return null;
+            return groceryList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public void createRecipe(Recipe recipe) {
 
