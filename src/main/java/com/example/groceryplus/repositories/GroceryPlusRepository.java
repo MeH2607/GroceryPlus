@@ -51,13 +51,24 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
 
     @Override
     public List<Grocery> getAllGroceries() {
-
+        List<Grocery> groceryList = new ArrayList();
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "Tor42Am41")) {
+            String SQL = "SELECT * FROM Groceries";
 
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+
+            while (rs.next()) {
+                String name = rs.getString("grocery_name");
+                double amount = rs.getDouble("amount");
+                String unit = rs.getString("unit");
+                groceryList.add(new Grocery(name, amount, unit));
+            }
+
+            return groceryList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 
 
