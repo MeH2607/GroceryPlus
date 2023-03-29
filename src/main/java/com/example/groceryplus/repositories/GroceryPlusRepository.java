@@ -7,23 +7,26 @@ import com.example.groceryplus.repositories.util.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
 @Repository("GroceryPlusDB")
 public class GroceryPlusRepository implements iGroceryPlusRepository{
 
+
     //TODO Asger: Implement this class
     @Override
     public List<Recipe> getAllRecipes(){
-        try (Connection conn = ConnectionManager.getConnection()) {
-            return null;
-        } catch (SQLException e) {
-            throw new runtimeException(e);
-        }
 
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "Tor42Am41")) {
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
+
     @Override
     public List<Grocery> getAllGroceries() {
         return null;

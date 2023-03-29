@@ -31,6 +31,7 @@ public class ConnectionManager {
         PASSWORD = password;
     }
 
+    // TODO grocery plus exception?
     public static Connection getConnection() throws GroceryPlusException {
         try {
             if (conn == null) conn = DriverManager.getConnection(URL,USER,PASSWORD);
