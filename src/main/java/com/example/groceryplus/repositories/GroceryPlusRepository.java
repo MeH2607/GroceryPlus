@@ -6,7 +6,9 @@ import com.example.groceryplus.services.GroceryPlusException;
 import com.example.groceryplus.repositories.util.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository("GroceryPlusDB")
@@ -15,9 +17,17 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
     //TODO Asger: Implement this class
     @Override
-    public List<Recipe> getAllRecipes() {
+    public List<Recipe> getAllRecipes(){
 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "Tor42Am41")) {
+            String SQL = "select * from recipe";
+
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add();
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -44,7 +54,6 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
             throw new RuntimeException(e);
         }
     }
-
     @Override
     public void createRecipe(Recipe recipe) {
 
