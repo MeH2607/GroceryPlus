@@ -9,7 +9,7 @@ public interface iGroceryPlusRepository {
     List<RecipeDTO> getRecipeDTOs();
     List<Grocery> getAllGroceries();
     void createRecipe(RecipeDTO recipeDTO);
-    void deleteRecipe(String name);
+    //void deleteRecipe(String name);
     List<Grocery> getShoppinglist();
 
 

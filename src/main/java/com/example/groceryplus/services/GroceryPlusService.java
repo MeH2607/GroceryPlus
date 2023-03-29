@@ -26,15 +26,19 @@ public class GroceryPlusService {
     public void createRecipe(RecipeDTO recipeDTO){
         groceryPlusRepository.createRecipe(recipeDTO);
     };
-    public void createGrocery(Grocery grocery){
-        groceryPlusRepository.createGrocery(grocery);
-    };
+
+
+    /*
     public void deleteRecipe(String name){
         groceryPlusRepository.deleteRecipe(name);
     };
     public void deleteGrocery(String name){
         groceryPlusRepository.deleteGrocery(name);
     };
+    public void createGrocery(Grocery grocery){
+        groceryPlusRepository.createGrocery(grocery);
+    };
+     */
     public List<Grocery> getShoppinglist(){
         return groceryPlusRepository.getShoppinglist();
     };
