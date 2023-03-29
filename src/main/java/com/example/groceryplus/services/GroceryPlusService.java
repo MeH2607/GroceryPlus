@@ -1,6 +1,6 @@
 package com.example.groceryplus.services;
 import com.example.groceryplus.model.Grocery;
-import com.example.groceryplus.model.Recipe;
+import com.example.groceryplus.model.RecipeDTO;
 import com.example.groceryplus.repositories.iGroceryPlusRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -17,14 +17,14 @@ public class GroceryPlusService {
         groceryPlusRepository = (iGroceryPlusRepository) context.getBean(impl);
     }
 
-    public List<Recipe> getAllRecipes(){
-        return groceryPlusRepository.getAllRecipes();
+    public List<RecipeDTO> getAllRecipes(){
+        return groceryPlusRepository.getRecipeDTOs();
     };
     public List<Grocery> getAllGroceries(){
         return groceryPlusRepository.getAllGroceries();
     };
-    public void createRecipe(Recipe recipe){
-        groceryPlusRepository.createRecipe(recipe);
+    public void createRecipe(RecipeDTO recipeDTO){
+        groceryPlusRepository.createRecipe(recipeDTO);
     };
     public void createGrocery(Grocery grocery){
         groceryPlusRepository.createGrocery(grocery);

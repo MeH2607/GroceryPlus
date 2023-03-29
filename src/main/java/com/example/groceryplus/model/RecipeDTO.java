@@ -2,12 +2,12 @@ package com.example.groceryplus.model;
 
 import java.util.List;
 
-public class Recipe {
+public class RecipeDTO {
     private String name;
     private String description;
     private List<Grocery> ingredients;
 
-    public Recipe(String name, String description, List<Grocery> ingredients) {
+    public RecipeDTO(String name, String description, List<Grocery> ingredients) {
         this.name = name;
         this.description = description;
         this.ingredients = ingredients;
@@ -30,6 +30,10 @@ public class Recipe {
     }
     public void setIngredients(List<Grocery> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public void addGrocery(Grocery g){
+        ingredients.add(g);
     }
 
     @Override

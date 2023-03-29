@@ -4,13 +4,13 @@ Scroll ingredients
 Create ingredient
 Remove ingredient from grocery list
 Add ingredient to grocery list
-Create recipe
+Create recipeDTO
 Scroll recipes
-Add recipe to grocery list (all ingredients added)
+Add recipeDTO to grocery list (all ingredients added)
 
 Extra features:
-Show calories for recipe (per person?)
-Change amount of persons for recipe
+Show calories for recipeDTO (per person?)
+Change amount of persons for recipeDTO
 When shopping: checking off groceries
 Copy/duplicate old list
 
@@ -18,7 +18,7 @@ Copy/duplicate old list
 Pages:
 Recipes
 Ingredients (with categories?)
-Create recipe
+Create recipeDTO
 Create ingredient 
 Create grocerylist
 View grocerylist

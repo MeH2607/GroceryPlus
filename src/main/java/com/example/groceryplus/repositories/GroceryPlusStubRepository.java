@@ -1,7 +1,7 @@
-package com.example.groceryplus.repositories;
+/* package com.example.groceryplus.repositories;
 
 import com.example.groceryplus.model.Grocery;
-import com.example.groceryplus.model.Recipe;
+import com.example.groceryplus.model.RecipeDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 @Repository("GroceryPlusStub")
 public class GroceryPlusStubRepository implements iGroceryPlusRepository{
     @Override
-    public List<Recipe> getAllRecipes() {
+    public List<RecipeDTO> getAllRecipes() {
         return null;
     }
     @Override
@@ -17,7 +17,7 @@ public class GroceryPlusStubRepository implements iGroceryPlusRepository{
         return null;
     }
     @Override
-    public void createRecipe(Recipe recipe) {
+    public void createRecipe(RecipeDTO recipeDTO) {
 
     }
     @Override
@@ -29,7 +29,7 @@ public class GroceryPlusStubRepository implements iGroceryPlusRepository{
 
     }
     @Override
-    public void updateRecipe(Recipe recipe) {
+    public void updateRecipe(RecipeDTO recipeDTO) {
 
     }
     @Override
@@ -41,3 +41,4 @@ public class GroceryPlusStubRepository implements iGroceryPlusRepository{
         return null;
     }
 }
+*/
