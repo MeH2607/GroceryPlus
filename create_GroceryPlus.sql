@@ -53,6 +53,3 @@ INSERT INTO ShoppingList (grocery_name, amount, unit) VALUES
 ('Carrots', 1, 'pcs'),
 ('Lettuce', 2, 'pcs'),
 ('Tomatoes', 3, 'pcs');
-
-
-select * from recipes;

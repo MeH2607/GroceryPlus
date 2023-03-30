@@ -15,7 +15,5 @@ public interface iGroceryPlusRepository {
     List<Grocery> getShoppinglist() throws GroceryPlusException;
 
 
-
-
-
+    void clearShoppinglist() throws GroceryPlusException;
 }
