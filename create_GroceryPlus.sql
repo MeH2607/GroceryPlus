@@ -1,3 +1,7 @@
+-- noinspection SqlDialectInspectionForFile
+
+-- noinspection SqlNoDataSourceInspectionForFile
+
 DROP DATABASE if exists GroceryPlus;
 CREATE DATABASE GroceryPlus;
 USE GroceryPlus;

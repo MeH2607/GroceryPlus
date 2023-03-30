@@ -17,7 +17,8 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
     @Override
     public List<RecipeDTO> getRecipeDTOs(){
         List<RecipeDTO> list = new ArrayList<>();
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "mohamed")) {
+        try {
+            Connection conn = ConnectionManager.getConnection();
             String SQL = "select * from recipes join recipes_has_groceries using (recipe_name)";
 
             PreparedStatement ps = conn.prepareStatement(SQL);
@@ -73,7 +74,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
             ResultSet rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
-                String name = rs.getString("name");
+                String name = rs.getString("grocery_name");
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
                 groceryList.add(new Grocery(name, amount, unit));
@@ -93,8 +94,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
     public void addGrocery(Grocery grocery) {
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "INSERT INTO GroceryPlus.Groceries (name, amount, unit) VALUES (?, ?, ?);";
-
+            String SQL = "INSERT INTO GroceryPlus.Groceries (grocery_name, amount, unit) VALUES (?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setString(1, grocery.getName());
             ps.setDouble(2, grocery.getAmount());
