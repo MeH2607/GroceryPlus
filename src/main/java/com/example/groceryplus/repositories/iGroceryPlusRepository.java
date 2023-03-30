@@ -8,8 +8,9 @@ import java.util.List;
 
 public interface iGroceryPlusRepository {
     List<RecipeDTO> getRecipeDTOs();
-    List<Grocery> getAllGroceries();
+    List<Grocery> getAllGroceries() throws GroceryPlusException;
     void createRecipe(RecipeDTO recipeDTO);
+    void addGrocery(Grocery grocery);
     //void deleteRecipe(String name);
     List<Grocery> getShoppinglist() throws GroceryPlusException;
 

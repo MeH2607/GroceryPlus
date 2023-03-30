@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>GroceryPlus</title>
+    <link th:href="@{/main.css}" rel="stylesheet">
 </head>
 <body>
+<button class="left-button"><a th:href="@{shopping_list}">View shoppinglist</a></button>
+<h1>All groceries</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Grocery</th>
+        <th>Amount</th>
+        <th>Unit</th>
+        <th>Add to Shoppinglist</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="grocery : ${list}">
 
+        <td th:text="${grocery.name}"></td>
+        <td th:text="${grocery.amount}"></td>
+        <td th:text="${grocery.unit}"></td>
+        <td><input type="submit" value="Add"></td>
+    </tr>
+    <tr>
+        <form action="all_groceries" method="post" th:object="${grocery}">
+            <td><input type="text" th:field="*{name}" placeholder="Name"></td>
+            <td><input type="number" th:field="*{amount}" placeholder="Amount"></td>
+            <td>
+                <select th:field="*{unit}">
+                    <option value="kg">kg</option>
+                    <option value="g">g</option>
+                    <option value="l">l</option>
+                    <option value="ml">ml</option>
+                </select>
+            </td>
+            <td><input type="submit" value="Create new"></td>
+        </form>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

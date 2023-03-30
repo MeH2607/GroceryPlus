@@ -51,17 +51,16 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
     }
 
     @Override
-    public List<Grocery> getAllGroceries() {
+    public List<Grocery> getAllGroceries() throws GroceryPlusException {
         List<Grocery> groceryList = new ArrayList();
-
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "Tor42Am41")) {
-            String SQL = "SELECT * FROM Groceries";
-
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "SELECT * FROM GroceryPlus.Groceries;";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
-                String name = rs.getString("grocery_name");
+                String name = rs.getString("name");
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
                 groceryList.add(new Grocery(name, amount, unit));
@@ -69,11 +68,30 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
 
             return groceryList;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new GroceryPlusException(e.getMessage());
         }
     }
     @Override
     public void createRecipe(RecipeDTO recipeDTO) {
+
+    }
+
+    @Override
+    public void addGrocery(Grocery grocery) {
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "INSERT INTO GroceryPlus.Groceries (name, amount, unit) VALUES (?, ?, ?);";
+
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setString(1, grocery.getName());
+            ps.setDouble(2, grocery.getAmount());
+            ps.setString(3, grocery.getUnit());
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

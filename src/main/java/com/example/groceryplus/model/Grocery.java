@@ -11,6 +11,10 @@ public class Grocery {
         this.unit = unit;
     }
 
+    public Grocery() {
+
+    }
+
     public String getName() {
         return name;
     }
@@ -29,7 +33,6 @@ public class Grocery {
     public void setUnit(String unit) {
         this.unit = unit;
     }
-
     @Override
     public String toString() {
         return "Grocery{" +

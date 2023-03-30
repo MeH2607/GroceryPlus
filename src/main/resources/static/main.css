@@ -1,7 +1,7 @@
 /* Basic Styles */
 
 body {
-    max-width: 500px;
+    max-width: 1000px;
     margin: auto;
     background-color: #7ea95f;
     color: #212121;
@@ -68,13 +68,10 @@ button, input[type="submit"] {
 
 input[type="text"], input[type="number"], select {
     width: 100%;
-    border: 2px solid #ccc;
-    padding: 10px;
-    font-size: 1.2em;
-    background: transparent;
-    border-bottom: 2px solid #fff;
+    font-size: 1em;
+    background: #dedede;
     color: #212121;
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 20px;
-    border-radius: 10px;
+    border-radius: 4px;
 }
+

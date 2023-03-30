@@ -20,7 +20,7 @@ public class GroceryPlusService {
     public List<RecipeDTO> getAllRecipes(){
         return groceryPlusRepository.getRecipeDTOs();
     };
-    public List<Grocery> getAllGroceries(){
+    public List<Grocery> getAllGroceries() throws GroceryPlusException{
         return groceryPlusRepository.getAllGroceries();
     };
     public void createRecipe(RecipeDTO recipeDTO){
@@ -43,7 +43,9 @@ public class GroceryPlusService {
         return groceryPlusRepository.getShoppinglist();
     };
 
-
+    public void addGrocery(Grocery grocery) {
+        groceryPlusRepository.addGrocery(grocery);
+    }
 
 
 }
