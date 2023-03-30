@@ -39,7 +39,7 @@ public class GroceryPlusService {
         groceryPlusRepository.createGrocery(grocery);
     };
      */
-    public List<Grocery> getShoppinglist(){
+    public List<Grocery> getShoppinglist() throws GroceryPlusException{
         return groceryPlusRepository.getShoppinglist();
     };
 

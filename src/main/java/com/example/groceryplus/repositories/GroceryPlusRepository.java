@@ -2,6 +2,8 @@ package com.example.groceryplus.repositories;
 
 import com.example.groceryplus.model.Grocery;
 import com.example.groceryplus.model.RecipeDTO;
+import com.example.groceryplus.repositories.util.ConnectionManager;
+import com.example.groceryplus.services.GroceryPlusException;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -51,6 +53,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
     @Override
     public List<Grocery> getAllGroceries() {
         List<Grocery> groceryList = new ArrayList();
+
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "Tor42Am41")) {
             String SQL = "SELECT * FROM Groceries";
 
@@ -69,17 +72,18 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
             throw new RuntimeException(e);
         }
     }
-
-
     @Override
     public void createRecipe(RecipeDTO recipeDTO) {
 
     }
 
     @Override
-    public List<Grocery> getShoppinglist() {
+    public List<Grocery> getShoppinglist() throws GroceryPlusException {
         List<Grocery> groceryList = new ArrayList();
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GroceryPlus", "root", "Tor42Am41")) {
+
+
+        try {
+            Connection conn = ConnectionManager.getConnection();
             String SQL = "SELECT * FROM GroceryPlus.ShoppingList;";
 
             Statement stmt = conn.createStatement();
@@ -94,7 +98,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
 
             return groceryList;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new GroceryPlusException(e.getMessage());
         }
     }
 }

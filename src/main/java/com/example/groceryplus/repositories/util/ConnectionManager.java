@@ -32,12 +32,11 @@ public class ConnectionManager {
     }
 
     // TODO grocery plus exception?
-    public static Connection getConnection() throws GroceryPlusException {
+    public static Connection getConnection(){
         try {
             if (conn == null) conn = DriverManager.getConnection(URL,USER,PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new GroceryPlusException("Could not connect to database");
         }
         return conn;
     }

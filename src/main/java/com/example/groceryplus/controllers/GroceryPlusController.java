@@ -1,6 +1,7 @@
 package com.example.groceryplus.controllers;
 import com.example.groceryplus.model.Grocery;
 import com.example.groceryplus.model.RecipeDTO;
+import com.example.groceryplus.services.GroceryPlusException;
 import com.example.groceryplus.services.GroceryPlusService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,7 @@ public class GroceryPlusController {
         return "all_groceries";
     }
     @GetMapping("shopping_list")
-    public String shoppingList(Model model) {
+    public String shoppingList(Model model) throws GroceryPlusException {
         List<Grocery> list = groceryPlusService.getShoppinglist();
         System.out.println(list);
         model.addAttribute("list", list);
