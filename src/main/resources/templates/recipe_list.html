@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>GroceryPlus</title>
-    <link th:href="@{/main.css}" rel="stylesheet">
+    <link th:href="@{/Recipe_list_style.css}" rel="stylesheet">
 </head>
 <body>
 <button class="left-button"><a th:href="@{shopping_list}">View Shopping list</a></button>
@@ -13,14 +13,13 @@
     <thead>
     <tr>
         <th>Recipe</th>
+
     </tr>
     </thead>
     <tbody>
     <tr th:each="recipe : ${list}">
-        <td th:text="${recipe.name}">
-            <button class="right-button"><a th:href="@{recipe_list/${recipe.name}}">Open recipe</a></button>
+        <td> <button class="recipe-button2"><a th:href="@{recipe_list/${recipe.name}}"><p th:text="${recipe.name}"></p> </a></button>
         </td>
-
     </tr>
     </tbody>
 </table>
