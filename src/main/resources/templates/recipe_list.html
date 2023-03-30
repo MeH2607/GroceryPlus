@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GroceryPlus</title>
+    <link th:href="@{/main.css}" rel="stylesheet">
+</head>
+<body>
+<button class="left-button"><a th:href="@{shopping_list}">View Shopping list</a></button>
+<button class="right-button"><a th:href="@{all_groceriesl}">View all groceries</a></button>
+<h1>Recipes</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Recipe</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="recipe : ${list}">
+        <td th:text="${recipe.name}">
+            <button class="right-button"><a th:href="@{recipe_list/${recipe.name}}">Open recipe</a></button>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

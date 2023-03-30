@@ -26,9 +26,14 @@ public class GroceryPlusController {
     public String index(){
         return "index";
     }
-    @GetMapping("all_recipes")
-    public String allRecipes() {
-        return "all_recipes";
+    @GetMapping("recipe_list")
+    public String allRecipes(Model model) {
+        List<RecipeDTO> list = new ArrayList<>();
+        for (RecipeDTO r : list) {
+            System.out.println(r.getName());
+        }
+        model.addAttribute("list", list);
+        return "recipe_list";
     }
 
     @GetMapping("all_groceries")
