@@ -95,10 +95,10 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
         List<Grocery> groceryList = new ArrayList();
 
 
+
         try {
             Connection conn = ConnectionManager.getConnection();
             String SQL = "SELECT * FROM GroceryPlus.ShoppingList;";
-
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
 
@@ -109,9 +109,27 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
                 groceryList.add(new Grocery(name, amount, unit));
             }
 
+
             return groceryList;
+        } catch (SQLException e) {
+            throw new GroceryPlusException(e.getMessage());
+
+        }
+
+    }
+    @Override
+    public void clearShoppinglist() throws GroceryPlusException { //metode som sletter shoppinglist row i SQL
+
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "DELETE FROM GroceryPlus.ShoppingList;";
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(SQL);
         } catch (SQLException e) {
             throw new GroceryPlusException(e.getMessage());
         }
     }
 }
+
+
+
