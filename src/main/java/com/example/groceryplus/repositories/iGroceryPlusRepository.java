@@ -18,7 +18,7 @@ public interface iGroceryPlusRepository {
     //void deleteRecipe(String name);
     List<Grocery> getShoppinglist() throws GroceryPlusException;
 
-    void addToShoppinglist(Grocery grocery) throws GroceryPlusException;
+    void addGroceryToShoppinglist(Grocery grocery) throws GroceryPlusException;
 
     void clearShoppinglist() throws GroceryPlusException;
 

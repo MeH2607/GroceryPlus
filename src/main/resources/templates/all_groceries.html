@@ -14,7 +14,6 @@
     </style>
 </head>
 <body style="background-color: #82ac85" ;>
-
 <section class="vh-100" >
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-1000">
@@ -29,13 +28,14 @@
 
                         </div>
                         <h1 class="text-center my-3 pb-3">All groceries</h1>
-                        <table class="table mb-4">
-                            <thead class="thead-dark">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" style="max-width: 800px;">
+                                <thead class="thead-dark">
                             <tr>
-                                <th>Grocery</th>
-                                <th>Amount</th>
-                                <th>Unit</th>
-                                <th>Add to shoppinglist</th>
+                                <th scope="col" class="col-6">Grocery</th>
+                                <th scope="col" class="col-1">Amount</th>
+                                <th scope="col" class="col-1">Unit</th>
+                                <th scope="col" class="col-1">Add</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -44,7 +44,7 @@
                                 <td th:text="*{grocery.amount}"></td>
                                 <td th:text="*{grocery.unit}"></td>
                                 <td>
-                                    <form action="add_to_shoppinglist" method="post" th:object="${grocery}">
+                                    <form action="add_grocery_to_shoppinglist" method="post" th:object="${grocery}">
                                         <input type="hidden" name="name" th:value="*{name}" />
                                         <input type="hidden" name="amount" th:value="*{amount}" />
                                         <input type="hidden" name="unit" th:value="*{unit}" />
@@ -54,8 +54,9 @@
                             </tr>
                             <tr>
                                 <form action="create_new_grocery" method="post" th:object="${grocery}">
-                                    <td><input type="text" th:field="*{name}" placeholder="Name"></td>
-                                    <td><input type="number" th:field="*{amount}" placeholder="Amount"></td>
+
+                                    <td><input type="text" th:field="*{name}" placeholder="Name" style="width: 100%;"></td>
+                                    <td><input type="number" th:field="*{amount}" placeholder="Amount" style="width: 100%;"></td>
                                     <td>
                                         <select th:field="*{unit}">
                                             <option value="kg">kg</option>
@@ -74,6 +75,7 @@
             </div>
         </div>
     </div>
+</div>
 </section>
 </body>
 </html>

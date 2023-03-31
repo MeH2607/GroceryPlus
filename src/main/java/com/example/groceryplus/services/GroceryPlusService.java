@@ -46,8 +46,8 @@ public class GroceryPlusService {
     public void addGrocery(Grocery grocery) {
         groceryPlusRepository.addGrocery(grocery);
     }
-    public void addToShoppinglist(Grocery grocery) throws GroceryPlusException{
-        groceryPlusRepository.addToShoppinglist(grocery);
+    public void addGroceryToShoppinglist(Grocery grocery) throws GroceryPlusException{
+        groceryPlusRepository.addGroceryToShoppinglist(grocery);
     };
 
     public RecipeDTO getSingleRecipe(String recipeName){

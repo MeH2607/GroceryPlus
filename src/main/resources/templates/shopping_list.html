@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+    <style>
         .container {
             max-width: 1500px; /* Change this value to adjust the width */
         }
+
     </style>
 </head>
 <body style="background-color: #82ac85" ;>
@@ -29,28 +31,31 @@
                             </div>
                         </div>
                         <h1 class="text-center my-3 pb-3">Shoppinglist</h1>
-                        <table class="table mb-4">
-                            <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Check</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Unit</th>
-                                <th scope="col">Remove from list</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr th:each="grocery : ${list}">
-                                <td><input type="checkbox" name="selected"></td>
-                                <td th:text="${grocery.name}"></td>
-                                <td th:text="${grocery.amount}"></td>
-                                <td th:text="${grocery.unit}"></td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" style="max-width: 800px;">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" class="col-1">Check</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col" class="col-1">Amount</th>
+                                    <th scope="col" class="col-1">Unit</th>
+                                    <th scope="col" class="col-1">Remove</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="grocery : ${list}">
+                                    <td><input type="checkbox" name="selected"></td>
+                                    <td th:text="${grocery.name}"></td>
+                                    <td th:text="${grocery.amount}"></td>
+                                    <td th:text="${grocery.unit}"></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -138,7 +138,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
 
     @Override
-    public void addToShoppinglist(Grocery grocery) throws GroceryPlusException {
+    public void addGroceryToShoppinglist(Grocery grocery) throws GroceryPlusException {
         try {
             Connection conn = ConnectionManager.getConnection();
             String SQL = "INSERT INTO GroceryPlus.ShoppingList (grocery_name, amount, unit) " +

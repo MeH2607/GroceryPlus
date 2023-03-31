@@ -59,10 +59,10 @@ public class GroceryPlusController {
         return "redirect:/groceryplus/all_groceries";
     }
 
-    @PostMapping("add_to_shoppinglist")
-    public String addToShoppingList(@ModelAttribute("grocery") Grocery grocery) throws GroceryPlusException {
+    @PostMapping("add_grocery_to_shoppinglist")
+    public String addGroceryToShoppinglist(@ModelAttribute("grocery") Grocery grocery) throws GroceryPlusException {
         System.out.println(grocery);
-        groceryPlusService.addToShoppinglist(grocery);
+        groceryPlusService.addGroceryToShoppinglist(grocery);
         return "redirect:/groceryplus/all_groceries";
     }
 
