@@ -37,7 +37,7 @@ public class GroceryPlusController {
         RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
         model.addAttribute("recipe", recipe);
 
-        return "singeRecipe";
+        return "single_Recipe";
     }
 
 
