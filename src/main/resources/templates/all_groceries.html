@@ -19,14 +19,21 @@
     </thead>
     <tbody>
     <tr th:each="grocery : ${list}">
-
-        <td th:text="${grocery.name}"></td>
-        <td th:text="${grocery.amount}"></td>
-        <td th:text="${grocery.unit}"></td>
-        <td><input type="submit" value="Add"></td>
+        <td th:text="*{grocery.name}"></td>
+        <td th:text="*{grocery.amount}"></td>
+        <td th:text="*{grocery.unit}"></td>
+        <td>
+            <form action="add_to_shoppinglist" method="post" th:object="${grocery}">
+                <input type="hidden" name="name" th:value="*{name}" />
+                <input type="hidden" name="amount" th:value="*{amount}" />
+                <input type="hidden" name="unit" th:value="*{unit}" />
+                <button class="addToShoppinglist" type="submit">Add</button>
+            </form>
+        </td>
     </tr>
+
     <tr>
-        <form action="all_groceries" method="post" th:object="${grocery}">
+        <form action="create_new_grocery" method="post" th:object="${grocery}">
             <td><input type="text" th:field="*{name}" placeholder="Name"></td>
             <td><input type="number" th:field="*{amount}" placeholder="Amount"></td>
             <td>

@@ -37,9 +37,10 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
 
-                if (recipeName.equals(currentRecipeName)) {
+               if(recipeName.equals(currentRecipeName)){
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
-                } else {
+                }
+                else{
                     currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
                     currentRecipeName = recipeName;
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
@@ -52,8 +53,9 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 */
 
 
-                if (!list.contains(currentRecipeDTO))
-                    list.add(currentRecipeDTO);
+
+                if(!list.contains(currentRecipeDTO))
+                list.add(currentRecipeDTO);
             }
 
         } catch (SQLException e) {
@@ -130,6 +132,25 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
         } catch (SQLException e) {
             throw new GroceryPlusException(e.getMessage());
 
+        }
+
+    }
+
+
+    @Override
+    public void addToShoppinglist(Grocery grocery) throws GroceryPlusException {
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "INSERT INTO GroceryPlus.ShoppingList (grocery_name, amount, unit) VALUES (?, ?, ?);";
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setString(1, grocery.getName());
+            ps.setDouble(2, grocery.getAmount());
+            ps.setString(3, grocery.getUnit());
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new GroceryPlusException(e.getMessage());
         }
 
     }
