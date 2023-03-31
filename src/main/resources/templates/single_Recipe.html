@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${recipe.name}"></title>
-    <link th:href="@{/single_Recipe.html}" rel="stylesheet">
+    <link th:href="@{/single_Recipe_style.css}" rel="stylesheet">
 
 </head>
 <body>
 <h1 th:text="${recipe.name}"></h1>
 
-<div align="center">
+<div class="descriptionBox" align="center">
     <p th:text="${recipe.description}"></p>
-
+    </div>
     <table>
         <thead>
         <tr>
@@ -29,10 +29,11 @@
         </tr>
         </tbody>
     </table>
-    <div>
 
+
+    <div class="bottomDivBox">
+        <button class="button"><a th:href="@{shopping_list}">Add recipe to your shopping list</a></button>
     </div>
-</div>
 
 </body>
 </html>

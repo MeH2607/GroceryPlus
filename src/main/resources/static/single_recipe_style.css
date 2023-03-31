@@ -13,6 +13,7 @@ h1 {
     text-align: center;
     margin: 50px 0 30px;
     text-shadow: 2px 2px #7ea95f;
+    color: white;
 }
 
 label {
@@ -75,3 +76,20 @@ input[type="text"], input[type="number"], select {
     border-radius: 4px;
 }
 
+.descriptionBox {
+    width: 1000px;
+    height: 100px;
+    background-color: white;
+    align-content: center;
+    font-size: 1.5em;
+}
+
+.bottomDivBox{
+    width: 1000px;
+    height: fit-content;
+    background-color: white;
+}
+
+.button{
+
+}
