@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     <tr th:each="recipe : ${list}">
-        <td> <button class="recipe-button2"><a th:href="@{'recipe_list/' + ${recipe.name}}"><p th:text="${recipe.name}"></p> </a></button>
+        <td> <button class="recipe-button2"><a th:href="@{'all_recipes/' + ${recipe.name}}"><p th:text="${recipe.name}"></p> </a></button>
         </td>
     </tr>
     </tbody>
