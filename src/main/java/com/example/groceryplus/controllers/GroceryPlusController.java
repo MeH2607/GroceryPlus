@@ -1,4 +1,5 @@
 package com.example.groceryplus.controllers;
+
 import com.example.groceryplus.model.Grocery;
 import com.example.groceryplus.model.RecipeDTO;
 import com.example.groceryplus.services.GroceryPlusException;
@@ -24,9 +25,10 @@ public class GroceryPlusController {
     }
 
     @GetMapping("")
-    public String index(){
+    public String index() {
         return "index";
     }
+
     @GetMapping("recipe_list")
     public String allRecipes(Model model) {
         List<RecipeDTO> list = groceryPlusService.getAllRecipes();
@@ -34,7 +36,6 @@ public class GroceryPlusController {
         model.addAttribute("list", list);
         return "recipe_list";
     }
-
 
 
     @GetMapping("all_groceries")
@@ -48,12 +49,19 @@ public class GroceryPlusController {
         return "all_groceries";
     }
 
-    @PostMapping("/all_groceries")
+    @PostMapping("create_new_grocery")
     public String submitForm(@ModelAttribute("grocery") Grocery grocery) {
         System.out.println(grocery);
         groceryPlusService.addGrocery(grocery);
         return "redirect:/groceryplus/all_groceries";
-        }
+    }
+
+    @PostMapping("add_to_shoppinglist")
+    public String addToShoppingList(@ModelAttribute("grocery") Grocery grocery) throws GroceryPlusException {
+        System.out.println(grocery);
+        groceryPlusService.addToShoppinglist(grocery);
+        return "redirect:/groceryplus/all_groceries";
+    }
 
     @GetMapping("shopping_list")
     public String shoppingList(Model model) throws GroceryPlusException {
@@ -62,6 +70,7 @@ public class GroceryPlusController {
         model.addAttribute("list", list);
         return "shopping_list";
     }
+
     @PostMapping("create_new_recipe")
     public String addRecipe() {
         return "create_new_recipe";

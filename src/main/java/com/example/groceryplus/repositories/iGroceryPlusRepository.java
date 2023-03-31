@@ -8,12 +8,17 @@ import java.util.List;
 
 public interface iGroceryPlusRepository {
     List<RecipeDTO> getRecipeDTOs();
+
     List<Grocery> getAllGroceries() throws GroceryPlusException;
+
     void createRecipe(RecipeDTO recipeDTO);
+
     void addGrocery(Grocery grocery);
+
     //void deleteRecipe(String name);
     List<Grocery> getShoppinglist() throws GroceryPlusException;
 
+    void addToShoppinglist(Grocery grocery) throws GroceryPlusException;
 
     void clearShoppinglist() throws GroceryPlusException;
 }

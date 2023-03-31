@@ -46,6 +46,9 @@ public class GroceryPlusService {
     public void addGrocery(Grocery grocery) {
         groceryPlusRepository.addGrocery(grocery);
     }
+    public void addToShoppinglist(Grocery grocery) throws GroceryPlusException{
+        groceryPlusRepository.addToShoppinglist(grocery);
+    };
 
 
 }

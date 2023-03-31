@@ -111,9 +111,6 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
     @Override
     public List<Grocery> getShoppinglist() throws GroceryPlusException {
         List<Grocery> groceryList = new ArrayList();
-
-
-
         try {
             Connection conn = ConnectionManager.getConnection();
             String SQL = "SELECT * FROM GroceryPlus.ShoppingList;";
@@ -135,6 +132,25 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
         }
 
     }
+
+    @Override
+    public void addToShoppinglist(Grocery grocery) throws GroceryPlusException {
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "INSERT INTO GroceryPlus.ShoppingList (grocery_name, amount, unit) VALUES (?, ?, ?);";
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setString(1, grocery.getName());
+            ps.setDouble(2, grocery.getAmount());
+            ps.setString(3, grocery.getUnit());
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new GroceryPlusException(e.getMessage());
+        }
+
+    }
+
     @Override
     public void clearShoppinglist() throws GroceryPlusException { //metode som sletter shoppinglist row i SQL
 
