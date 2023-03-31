@@ -4,12 +4,10 @@ import com.example.groceryplus.model.Grocery;
 import com.example.groceryplus.model.RecipeDTO;
 import com.example.groceryplus.services.GroceryPlusException;
 import com.example.groceryplus.services.GroceryPlusService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,15 +24,15 @@ public class GroceryPlusController {
         return "index";
     }
 
-    @GetMapping("recipe_list")
+    @GetMapping("all_recipes")
     public String allRecipes(Model model) {
         List<RecipeDTO> list = groceryPlusService.getAllRecipes();
 
         model.addAttribute("list", list);
-        return "recipe_list";
+        return "all_recipes";
     }
 
-    @GetMapping("recipe_list/{recipeName}")
+    @GetMapping("all_recipes/{recipeName}")
     public String getSingleRecipe(@PathVariable String recipeName, Model model){
         RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
         model.addAttribute("recipe", recipe);
