@@ -148,7 +148,6 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
             ps.setString(1, grocery.getName());
             ps.setDouble(2, grocery.getAmount());
             ps.setString(3, grocery.getUnit());
-
             ps.executeUpdate();
 
         } catch (SQLException e) {

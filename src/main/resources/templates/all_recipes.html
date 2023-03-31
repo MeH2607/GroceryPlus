@@ -1,27 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>GroceryPlus</title>
-    <link th:href="@{/all_recipes_style.css}" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 1500px; /* Change this value to adjust the width */
+        }
+    </style>
 </head>
-<body>
-<button class="left-button"><a th:href="@{shopping_list}">View Shopping list</a></button>
-<button class="right-button"><a th:href="@{all_groceries}">View all groceries</a></button>
-<h1>Recipes</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Recipe</th>
+<body style="background-color: #82ac85" ;>
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="recipe : ${list}">
-        <td> <button class="recipe-button2"><a th:href="@{'all_recipes/' + ${recipe.name}}"><p th:text="${recipe.name}"></p> </a></button>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<section class="vh-100" >
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-1000">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card rounded-10">
+                    <div class="card-body p-4 " style="background-color: rgba(191,216,196,0.36)">
+                        <div class="row justify-content-between mb-3">
+                            <div class="col-12 text-right">
+                                <button class="btn btn-outline-primary"><a th:href="@{shopping_list}">View shoppinglist</a></button>
+                            </div>
+                        </div>
+                        <h1 class="text-center my-3 pb-3">All recipes</h1>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Recipe</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="recipe : ${list}">
+                                <td> <button class="recipe-button2"><a th:href="@{'all_recipes/' + ${recipe.name}}"><p th:text="${recipe.name}"></p> </a></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

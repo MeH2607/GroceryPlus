@@ -1,31 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>GroceryPlus</title>
-    <link th:href="@{/main.css}" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+        .container {
+            max-width: 1500px; /* Change this value to adjust the width */
+        }
+    </style>
 </head>
-<body>
-<button class="left-button"><a th:href="@{all_recipes}">View all recipes</a></button>
-<button class="right-button"><a th:href="@{all_groceries}">View all groceries</a></button>
-<h1>Shoppinglist</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Check</th>
-        <th>Grocery</th>
-        <th>Amount</th>
-        <th>Unit</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="grocery : ${list}">
-        <td><input type="checkbox" name="selected"></td>
-        <td th:text="${grocery.name}"></td>
-        <td th:text="${grocery.amount}"></td>
-        <td th:text="${grocery.unit}"></td>
-    </tr>
-    </tbody>
-</table>
+<body style="background-color: #82ac85" ;>
+
+<section class="vh-100" >
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-1000">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card rounded-10">
+                    <div class="card-body p-4 " style="background-color: rgba(191,216,196,0.36)">
+                        <div class="row justify-content-between mb-3">
+                            <div class="col-6">
+                                <button class="btn btn-outline-primary"><a th:href="@{all_recipes}">View all recipes</a></button>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button class="btn btn-outline-primary"><a th:href="@{all_groceries}">View all groceries</a></button>
+                            </div>
+                        </div>
+                        <h1 class="text-center my-3 pb-3">Shoppinglist</h1>
+                        <table class="table mb-4">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Check</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Unit</th>
+                                <th scope="col">Remove from list</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr th:each="grocery : ${list}">
+                                <td><input type="checkbox" name="selected"></td>
+                                <td th:text="${grocery.name}"></td>
+                                <td th:text="${grocery.amount}"></td>
+                                <td th:text="${grocery.unit}"></td>
+                                <td>
+                                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

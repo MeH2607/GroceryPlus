@@ -1,53 +1,79 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>GroceryPlus</title>
-    <link th:href="@{/main.css}" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 1500px; /* Change this value to adjust the width */
+        }
+    </style>
 </head>
-<body>
-<button class="left-button"><a th:href="@{shopping_list}">View shoppinglist</a></button>
-<h1>All groceries</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Grocery</th>
-        <th>Amount</th>
-        <th>Unit</th>
-        <th>Add to Shoppinglist</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="grocery : ${list}">
-        <td th:text="*{grocery.name}"></td>
-        <td th:text="*{grocery.amount}"></td>
-        <td th:text="*{grocery.unit}"></td>
-        <td>
-            <form action="add_to_shoppinglist" method="post" th:object="${grocery}">
-                <input type="hidden" name="name" th:value="*{name}" />
-                <input type="hidden" name="amount" th:value="*{amount}" />
-                <input type="hidden" name="unit" th:value="*{unit}" />
-                <button class="addToShoppinglist" type="submit">Add</button>
-            </form>
-        </td>
-    </tr>
+<body style="background-color: #82ac85" ;>
 
-    <tr>
-        <form action="create_new_grocery" method="post" th:object="${grocery}">
-            <td><input type="text" th:field="*{name}" placeholder="Name"></td>
-            <td><input type="number" th:field="*{amount}" placeholder="Amount"></td>
-            <td>
-                <select th:field="*{unit}">
-                    <option value="kg">kg</option>
-                    <option value="g">g</option>
-                    <option value="l">l</option>
-                    <option value="ml">ml</option>
-                </select>
-            </td>
-            <td><input type="submit" value="Create new"></td>
-        </form>
-    </tr>
-    </tbody>
-</table>
+<section class="vh-100" >
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-1000">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card rounded-10">
+                    <div class="card-body p-4 " style="background-color: rgba(191,216,196,0.36)">
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-outline-primary"><a th:href="@{shopping_list}">View shoppinglist</a></button>
+                                </button>
+                            </div>
+
+                        </div>
+                        <h1 class="text-center my-3 pb-3">All groceries</h1>
+                        <table class="table mb-4">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Grocery</th>
+                                <th>Amount</th>
+                                <th>Unit</th>
+                                <th>Add to shoppinglist</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="grocery : ${list}">
+                                <td th:text="*{grocery.name}"></td>
+                                <td th:text="*{grocery.amount}"></td>
+                                <td th:text="*{grocery.unit}"></td>
+                                <td>
+                                    <form action="add_to_shoppinglist" method="post" th:object="${grocery}">
+                                        <input type="hidden" name="name" th:value="*{name}" />
+                                        <input type="hidden" name="amount" th:value="*{amount}" />
+                                        <input type="hidden" name="unit" th:value="*{unit}" />
+                                        <button class="btn btn-primary btn-sm" type="submit">Add</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <form action="create_new_grocery" method="post" th:object="${grocery}">
+                                    <td><input type="text" th:field="*{name}" placeholder="Name"></td>
+                                    <td><input type="number" th:field="*{amount}" placeholder="Amount"></td>
+                                    <td>
+                                        <select th:field="*{unit}">
+                                            <option value="kg">kg</option>
+                                            <option value="g">g</option>
+                                            <option value="l">l</option>
+                                            <option value="ml">ml</option>
+                                        </select>
+                                    </td>
+                                    <td><input class="btn btn-success btn-sm" type="submit" value="Create new"></td>
+                                </form>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
