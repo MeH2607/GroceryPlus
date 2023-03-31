@@ -141,7 +141,9 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
     public void addToShoppinglist(Grocery grocery) throws GroceryPlusException {
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "INSERT INTO GroceryPlus.ShoppingList (grocery_name, amount, unit) VALUES (?, ?, ?);";
+            String SQL = "INSERT INTO GroceryPlus.ShoppingList (grocery_name, amount, unit) " +
+                    "VALUES (?, ?, ?) AS new " +
+                    "ON DUPLICATE KEY UPDATE GroceryPlus.ShoppingList.amount = GroceryPlus.ShoppingList.amount + new.amount;";
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setString(1, grocery.getName());
             ps.setDouble(2, grocery.getAmount());
