@@ -47,5 +47,8 @@ public class GroceryPlusService {
         groceryPlusRepository.addGrocery(grocery);
     }
 
+    public RecipeDTO getSingleRecipe(String recipeName){
+        return groceryPlusRepository.getSingleRecipeDTO(recipeName);
+    }
 
 }

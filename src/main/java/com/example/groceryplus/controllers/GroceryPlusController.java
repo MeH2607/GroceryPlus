@@ -6,10 +6,7 @@ import com.example.groceryplus.services.GroceryPlusService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +30,14 @@ public class GroceryPlusController {
 
         model.addAttribute("list", list);
         return "recipe_list";
+    }
+
+    @GetMapping("recipe_list/{recipeName}")
+    public String getSingleRecipe(@PathVariable String recipeName, Model model){
+        RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
+        model.addAttribute("recipe", recipe);
+
+        return "singeRecipe";
     }
 
 
@@ -66,4 +71,5 @@ public class GroceryPlusController {
     public String addRecipe() {
         return "create_new_recipe";
     }
+
 }
