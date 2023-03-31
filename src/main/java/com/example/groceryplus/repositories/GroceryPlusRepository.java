@@ -147,6 +147,8 @@ public class GroceryPlusRepository implements iGroceryPlusRepository{
             throw new GroceryPlusException(e.getMessage());
         }
     }
+
+ //   public RecipeDTO showOneRecipe(String)
 }
 
 
