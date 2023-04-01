@@ -23,4 +23,6 @@ public interface iGroceryPlusRepository {
     void clearShoppinglist() throws GroceryPlusException;
 
     RecipeDTO getSingleRecipeDTO(String recipeNameSearch);
+
+    void deleteGroceryFromShoppinglist(String name);
 }

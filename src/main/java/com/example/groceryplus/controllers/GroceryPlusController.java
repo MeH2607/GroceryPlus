@@ -66,6 +66,13 @@ public class GroceryPlusController {
         return "redirect:/groceryplus/all_groceries";
     }
 
+    @GetMapping("delete_grocery_from_shoppinglist/{name}")
+    public String deleteGroceryFromShoppinglist(@PathVariable String name) throws GroceryPlusException {
+        System.out.println(name);
+        groceryPlusService.deleteGroceryFromShoppinglist(name);
+        return "redirect:/groceryplus/shopping_list";
+    }
+
     @GetMapping("shopping_list")
     public String shoppingList(Model model) throws GroceryPlusException {
         List<Grocery> list = groceryPlusService.getShoppinglist();

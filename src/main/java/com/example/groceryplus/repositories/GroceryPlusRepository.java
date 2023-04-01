@@ -136,7 +136,6 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
     }
 
-
     @Override
     public void addGroceryToShoppinglist(Grocery grocery) throws GroceryPlusException {
         try {
@@ -161,13 +160,14 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "DELETE FROM GroceryPlus.ShoppingList;";
+            String SQL = "DELETE * FROM GroceryPlus.ShoppingList;";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(SQL);
         } catch (SQLException e) {
             throw new GroceryPlusException(e.getMessage());
         }
     }
+
 
     public RecipeDTO getSingleRecipeDTO(String recipeNameSearch) {
 
@@ -200,6 +200,21 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void deleteGroceryFromShoppinglist(String name) {
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "DELETE FROM GroceryPlus.ShoppingList WHERE grocery_name = ?;";
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setString(1, name);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
 
