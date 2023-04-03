@@ -216,6 +216,153 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
         }
 
     }
+
+    public List<RecipeDTO> getVeganList() {
+        List<RecipeDTO> list = new ArrayList<>();
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "select * from recipes join recipes_has_groceries using (recipe_name) where Category_name = 'vegan'";
+
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+
+            String currentRecipeName = "";
+            RecipeDTO currentRecipeDTO = null;
+
+            while (rs.next()) {
+
+                // tjekker hvis opskriften allerede findes. Hvis den ikke gør, så laver den et nyt opskrift objekt.
+                String recipeName = rs.getString("recipe_name");
+                String description = rs.getString("description");
+
+                String groceryName = rs.getString("grocery_name");
+                double amount = rs.getDouble("amount");
+                String unit = rs.getString("unit");
+
+                if(recipeName.equals(currentRecipeName)){
+                    currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
+                }
+                else{
+                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
+                    currentRecipeName = recipeName;
+                    currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
+                }
+
+               /* if (!list.contains(currentRecipeDTO)) {
+                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
+                }
+                                currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
+                */
+
+
+
+                if(!list.contains(currentRecipeDTO))
+                    list.add(currentRecipeDTO);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
+    public List<RecipeDTO> getStandardList() {
+        List<RecipeDTO> list = new ArrayList<>();
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "select * from recipes join recipes_has_groceries using (recipe_name) where Category_name = 'Standard'";
+
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+
+            String currentRecipeName = "";
+            RecipeDTO currentRecipeDTO = null;
+
+            while (rs.next()) {
+
+                // tjekker hvis opskriften allerede findes. Hvis den ikke gør, så laver den et nyt opskrift objekt.
+                String recipeName = rs.getString("recipe_name");
+                String description = rs.getString("description");
+
+                String groceryName = rs.getString("grocery_name");
+                double amount = rs.getDouble("amount");
+                String unit = rs.getString("unit");
+
+                if(recipeName.equals(currentRecipeName)){
+                    currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
+                }
+                else{
+                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
+                    currentRecipeName = recipeName;
+                    currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
+                }
+
+               /* if (!list.contains(currentRecipeDTO)) {
+                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
+                }
+                                currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
+                */
+
+
+
+                if(!list.contains(currentRecipeDTO))
+                    list.add(currentRecipeDTO);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
+    public List<RecipeDTO> getGlutenFreeList() {
+        List<RecipeDTO> list = new ArrayList<>();
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "select * from recipes join recipes_has_groceries using (recipe_name) where Category_name = 'Gluten free'";
+
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+
+            String currentRecipeName = "";
+            RecipeDTO currentRecipeDTO = null;
+
+            while (rs.next()) {
+
+                // tjekker hvis opskriften allerede findes. Hvis den ikke gør, så laver den et nyt opskrift objekt.
+                String recipeName = rs.getString("recipe_name");
+                String description = rs.getString("description");
+
+                String groceryName = rs.getString("grocery_name");
+                double amount = rs.getDouble("amount");
+                String unit = rs.getString("unit");
+
+                if(recipeName.equals(currentRecipeName)){
+                    currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
+                }
+                else{
+                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
+                    currentRecipeName = recipeName;
+                    currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
+                }
+
+               /* if (!list.contains(currentRecipeDTO)) {
+                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
+                }
+                                currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
+                */
+
+
+
+                if(!list.contains(currentRecipeDTO))
+                    list.add(currentRecipeDTO);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
 }
 
 

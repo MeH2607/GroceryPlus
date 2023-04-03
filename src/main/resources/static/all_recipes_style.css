@@ -79,6 +79,7 @@ button, input[type="submit"] {
 .recipe-button2 {
     flex: 1;
     height: 100%;
+    width: 1000px;
     background-color: transparent;
     border: none;
     text-align: center;
