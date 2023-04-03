@@ -30,12 +30,42 @@
                         <table>
                             <thead>
                             <tr>
-                                <th>Recipe</th>
+                                <th>Standard Recipes</th>
 
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="recipe : ${list}">
+                            <tr th:each="recipe : ${standardList}">
+                                <td> <button class="recipe-button2"><a th:href="@{'all_recipes/' + ${recipe.name}}"><p th:text="${recipe.name}"></p> </a></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Vegan Recipes</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="recipe : ${veganList}">
+                                <td> <button class="recipe-button2"><a th:href="@{'all_recipes/' + ${recipe.name}}"><p th:text="${recipe.name}"></p> </a></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Gluten Free Recipes</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="recipe : ${glutenFreeList}">
                                 <td> <button class="recipe-button2"><a th:href="@{'all_recipes/' + ${recipe.name}}"><p th:text="${recipe.name}"></p> </a></button>
                                 </td>
                             </tr>

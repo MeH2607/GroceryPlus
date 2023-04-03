@@ -26,14 +26,23 @@ public class GroceryPlusController {
 
     @GetMapping("all_recipes")
     public String allRecipes(Model model) {
-        List<RecipeDTO> list = groceryPlusService.getAllRecipes();
+        //  List<RecipeDTO> list = groceryPlusService.getAllRecipes();
+        // model.addAttribute("list", list);
 
-        model.addAttribute("list", list);
+        List<RecipeDTO> standardList = groceryPlusService.getStandardList();
+        List<RecipeDTO> veganList = groceryPlusService.getVeganList();
+        List<RecipeDTO> glutenFreeList = groceryPlusService.getGlutenFreeList();
+
+        model.addAttribute("standardList", standardList);
+        model.addAttribute("veganList", veganList);
+        model.addAttribute("glutenFreeList", glutenFreeList);
+
+
         return "all_recipes";
     }
 
     @GetMapping("all_recipes/{recipeName}")
-    public String getSingleRecipe(@PathVariable String recipeName, Model model){
+    public String getSingleRecipe(@PathVariable String recipeName, Model model) {
         RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
         model.addAttribute("recipe", recipe);
 

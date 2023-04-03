@@ -25,4 +25,10 @@ public interface iGroceryPlusRepository {
     RecipeDTO getSingleRecipeDTO(String recipeNameSearch);
 
     void deleteGroceryFromShoppinglist(String name);
+
+    List<RecipeDTO> getStandardList();
+
+    List<RecipeDTO> getVeganList();
+
+    List<RecipeDTO> getGlutenFreeList();
 }

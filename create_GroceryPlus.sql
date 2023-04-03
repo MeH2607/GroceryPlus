@@ -2,8 +2,7 @@
 
 -- noinspection SqlNoDataSourceInspectionForFile
 
-DROP
-DATABASE if exists GroceryPlus;
+DROP DATABASE if exists GroceryPlus;
 CREATE
 DATABASE GroceryPlus;
 USE

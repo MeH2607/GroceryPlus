@@ -60,4 +60,15 @@ public class GroceryPlusService {
         return groceryPlusRepository.getSingleRecipeDTO(recipeName);
     }
 
+    public List<RecipeDTO> getStandardList(){
+        return groceryPlusRepository.getStandardList();
+    }
+
+    public List<RecipeDTO> getVeganList(){
+        return groceryPlusRepository.getVeganList();
+    }
+
+    public List<RecipeDTO> getGlutenFreeList(){
+        return groceryPlusRepository.getGlutenFreeList();
+    }
 }
