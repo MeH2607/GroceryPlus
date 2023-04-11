@@ -26,8 +26,7 @@ CREATE TABLE Recipes
     recipe_name VARCHAR(255) PRIMARY KEY,
     description VARCHAR(255),
     category_name VARCHAR(255),
-    FOREIGN KEY (category_name) REFERENCES Categories (category_name);
-
+    FOREIGN KEY (category_name) REFERENCES Categories (category_name)
 );
 
 CREATE TABLE ShoppingList
@@ -58,14 +57,14 @@ VALUES ('Apples', 10, 'pcs'),
        ('Carrots', 5, 'pcs'),
        ('Lettuce', 3, 'pcs'),
        ('Tomatoes', 6, 'pcs'),
-       ('Chicken thighs', 5 , 'pcs')
-('Onion', 1 , 'pcs'),
-('Galic', 1 , 'pcs'),
-('Smooth peanut butter', 500 , 'grams'),
-('bacon', 100, 'gram'),
-('Whipped cream', 100 , 'gram'),
-('Spaghetti', 500, 'gram'),
-('Parmesan', 250, 'gram');
+       ('Chicken thighs', 5 , 'pcs'),
+       ('Onion', 1 , 'pcs'),
+       ('Galic', 1 , 'pcs'),
+       ('Smooth peanut butter', 500 , 'grams'),
+       ('bacon', 100, 'gram'),
+       ('Whipped cream', 100 , 'gram'),
+       ('Spaghetti', 500, 'gram'),
+       ('Parmesan', 250, 'gram');
 
 INSERT INTO Recipes (recipe_name, description, category_name)
 VALUES ('Apple Salad', 'very good apple taste', 'vegan'),
@@ -80,15 +79,15 @@ VALUES ('Apple Salad', 'Apples', 3, 'pcs'),
        ('Apple Salad', 'Tomatoes', 2, 'pcs'),
        ('Hot Gazpacho', 'Tomatoes', 4, 'pcs'),
        ('Hot Gazpacho', 'Carrots', 2, 'pcs'),
-       ('Hot Gazpacho', 'Lettuce', 1, 'pcs')
-('Bolognese','bacon', 100, 'gram'),
-('Bolognese','Whipped cream', 100 , 'gram'),
-('Bolognese','Spaghetti', 250, 'gram'),
-('Bolognese','Parmesan', 50, 'gram'),
-('Peanut butter chicken','Chicken thighs', 5 , 'pcs'),
-('Peanut butter chicken','Onion', 1 , 'pcs'),
-('Peanut butter chicken','Galic', 1 , 'pcs'),
-('Peanut butter chicken','Smooth peanut butter', 500 , 'grams');
+       ('Hot Gazpacho', 'Lettuce', 1, 'pcs'),
+       ('Bolognese','bacon', 100, 'gram'),
+       ('Bolognese','Whipped cream', 100 , 'gram'),
+       ('Bolognese','Spaghetti', 250, 'gram'),
+       ('Bolognese','Parmesan', 50, 'gram'),
+       ('Peanut butter chicken','Chicken thighs', 5 , 'pcs'),
+       ('Peanut butter chicken','Onion', 1 , 'pcs'),
+       ('Peanut butter chicken','Galic', 1 , 'pcs'),
+       ('Peanut butter chicken','Smooth peanut butter', 500 , 'grams');
 
 INSERT INTO ShoppingList (grocery_name, amount, unit)
 VALUES ('Apples', 2, 'pcs'),
