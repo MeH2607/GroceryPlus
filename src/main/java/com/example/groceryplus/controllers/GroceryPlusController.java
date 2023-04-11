@@ -85,7 +85,7 @@ public class GroceryPlusController {
     @GetMapping("add_recipe_to_shoppingList")
     public String addRecipeToShoppingList(@PathVariable String recipeName) throws GroceryPlusException{
         groceryPlusService.addRecipeToShoppingList(recipeName);
-        return "redirect:/groceryplus/all_recipes";
+        return "redirect:/groceryplus/shopping_list";
     }
 
     @GetMapping("shopping_list")

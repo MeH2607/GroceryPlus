@@ -35,7 +35,7 @@
 
 
     <div class="bottomDivBox">
-        <button class="button"><a th:href="'add_recipe_to_shoppingList' + ${recipe.name}">Add recipe to your shopping list</a></button>
+        <button type="submit" class="button"><a th:href="@{'add_recipe_to_shoppingList/' + ${recipe.name}}">Add recipe to your shopping list</a></button>
     </div>
 
 </body>
