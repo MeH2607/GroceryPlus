@@ -95,4 +95,5 @@ VALUES ('Apples', 2, 'pcs'),
        ('Lettuce', 2, 'pcs'),
        ('Tomatoes', 3, 'pcs');
        
-       SELECT * FROM Groceries, ShoppingList WHERE Groceries.grocery_name = shoppinglist.grocery_name;
+       SELECT Groceries.grocery_name, amount, Groceries.unit, cart_amount FROM Groceries, ShoppingList WHERE Groceries.grocery_name = shoppinglist.grocery_name;
+       SELECT Groceries.grocery_name, amount, Groceries.unit, cart_amount FROM Groceries JOIN ShoppingList using (grocery_name);

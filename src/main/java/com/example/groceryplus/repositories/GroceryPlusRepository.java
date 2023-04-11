@@ -64,12 +64,13 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
         return list;
     }
 
+
     @Override
     public List<Grocery> getAllGroceries() throws GroceryPlusException {
         List<Grocery> groceryList = new ArrayList();
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "SELECT * FROM GroceryPlus.Groceries, GroceryPlus.ShoppingList WHERE ;";
+            String SQL = "SELECT Groceries.grocery_name, amount, Groceries.unit, cart_amount FROM Groceries JOIN ShoppingList using (grocery_name);";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
 
