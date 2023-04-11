@@ -69,7 +69,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
         List<Grocery> groceryList = new ArrayList();
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "SELECT * FROM GroceryPlus.Groceries;";
+            String SQL = "SELECT * FROM GroceryPlus.Groceries, GroceryPlus.ShoppingList WHERE ;";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
 
@@ -77,7 +77,8 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 String name = rs.getString("grocery_name");
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
-                groceryList.add(new Grocery(name, amount, unit));
+                double cartAmount = rs.getDouble("cart_amount");
+                groceryList.add(new Grocery(name, amount, unit, cartAmount));
             }
 
             return groceryList;
@@ -113,7 +114,6 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
     public List<Grocery> getShoppinglist() throws GroceryPlusException {
         List<Grocery> groceryList = new ArrayList();
 
-
         try {
             Connection conn = ConnectionManager.getConnection();
             String SQL = "SELECT * FROM GroceryPlus.ShoppingList;";
@@ -122,11 +122,11 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
             while (rs.next()) {
                 String name = rs.getString("grocery_name");
-                double amount = rs.getDouble("amount");
+                double amount = rs.getDouble("cart_amount");
                 String unit = rs.getString("unit");
+
                 groceryList.add(new Grocery(name, amount, unit));
             }
-
 
             return groceryList;
         } catch (SQLException e) {
@@ -140,9 +140,9 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
     public void addGroceryToShoppinglist(Grocery grocery) throws GroceryPlusException {
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "INSERT INTO GroceryPlus.ShoppingList (grocery_name, amount, unit) " +
+            String SQL = "INSERT INTO GroceryPlus.ShoppingList (grocery_name, cart_amount, unit) " +
                     "VALUES (?, ?, ?) AS new " +
-                    "ON DUPLICATE KEY UPDATE GroceryPlus.ShoppingList.amount = GroceryPlus.ShoppingList.amount + new.amount;";
+                    "ON DUPLICATE KEY UPDATE GroceryPlus.ShoppingList.cart_amount = GroceryPlus.ShoppingList.cart_amount + new.cart_amount;";
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setString(1, grocery.getName());
             ps.setDouble(2, grocery.getAmount());
