@@ -37,25 +37,17 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
 
-               if(recipeName.equals(currentRecipeName)){
+                if (recipeName.equals(currentRecipeName)) {
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
-                }
-                else{
+                } else {
                     currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
                     currentRecipeName = recipeName;
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
                 }
 
-               /* if (!list.contains(currentRecipeDTO)) {
-                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
-                }
-                                currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
-                */
 
-
-
-                if(!list.contains(currentRecipeDTO))
-                list.add(currentRecipeDTO);
+                if (!list.contains(currentRecipeDTO))
+                    list.add(currentRecipeDTO);
             }
 
         } catch (SQLException e) {
@@ -202,6 +194,19 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
         }
     }
 
+    public void addRecipeToShoppingList(String recipeName) {
+        try {
+            Connection conn = ConnectionManager.getConnection();
+            String SQL = "INSERT INTO ShoppingList (grocery_name, amount, unit) select grocery_name, amount, unit from recipes join recipes_has_groceries using (recipe_name) where recipe_name = ?";
+            PreparedStatement ps = conn.prepareCall(SQL);
+            ps.setString(1, recipeName);
+            ps.executeQuery();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public void deleteGroceryFromShoppinglist(String name) {
         try {
@@ -239,10 +244,9 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
 
-                if(recipeName.equals(currentRecipeName)){
+                if (recipeName.equals(currentRecipeName)) {
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
-                }
-                else{
+                } else {
                     currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
                     currentRecipeName = recipeName;
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
@@ -255,8 +259,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 */
 
 
-
-                if(!list.contains(currentRecipeDTO))
+                if (!list.contains(currentRecipeDTO))
                     list.add(currentRecipeDTO);
             }
 
@@ -288,10 +291,9 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
 
-                if(recipeName.equals(currentRecipeName)){
+                if (recipeName.equals(currentRecipeName)) {
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
-                }
-                else{
+                } else {
                     currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
                     currentRecipeName = recipeName;
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
@@ -304,8 +306,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 */
 
 
-
-                if(!list.contains(currentRecipeDTO))
+                if (!list.contains(currentRecipeDTO))
                     list.add(currentRecipeDTO);
             }
 
@@ -337,10 +338,9 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
 
-                if(recipeName.equals(currentRecipeName)){
+                if (recipeName.equals(currentRecipeName)) {
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
-                }
-                else{
+                } else {
                     currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
                     currentRecipeName = recipeName;
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
@@ -353,8 +353,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 */
 
 
-
-                if(!list.contains(currentRecipeDTO))
+                if (!list.contains(currentRecipeDTO))
                     list.add(currentRecipeDTO);
             }
 

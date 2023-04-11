@@ -82,6 +82,12 @@ public class GroceryPlusController {
         return "redirect:/groceryplus/shopping_list";
     }
 
+    @GetMapping("add_recipe_to_shoppingList")
+    public String addRecipeToShoppingList(@PathVariable String recipeName) throws GroceryPlusException{
+        groceryPlusService.addRecipeToShoppingList(recipeName);
+        return "redirect:/groceryplus/all_recipes";
+    }
+
     @GetMapping("shopping_list")
     public String shoppingList(Model model) throws GroceryPlusException {
         List<Grocery> list = groceryPlusService.getShoppinglist();

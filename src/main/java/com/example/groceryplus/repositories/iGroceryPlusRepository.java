@@ -31,4 +31,6 @@ public interface iGroceryPlusRepository {
     List<RecipeDTO> getVeganList();
 
     List<RecipeDTO> getGlutenFreeList();
+
+    void addRecipeToShoppingList(String recipeName);
 }

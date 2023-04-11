@@ -71,4 +71,6 @@ public class GroceryPlusService {
     public List<RecipeDTO> getGlutenFreeList(){
         return groceryPlusRepository.getGlutenFreeList();
     }
+
+    public void addRecipeToShoppingList(String recipeName){ groceryPlusRepository.addRecipeToShoppingList(recipeName);}
 }
