@@ -9,7 +9,8 @@
 <body>
 <h1 th:text="${recipe.name}"></h1>
 
-    <button class="left-button"><a th:href="@{all_recipes}">Return to recipe list</a></button>
+   <button><a th:href="@{/groceryplus/all_recipes}">Return to recipe list</a></button>
+
 
 <div class="descriptionBox" align="center">
     <p th:text="${recipe.description}"></p>
