@@ -25,7 +25,6 @@
         </thead>
         <tbody>
         <tr th:each="ingredient : ${recipe.ingredients}">
-
             <td th:text="${ingredient.name}"></td>
             <td th:text="${ingredient.amount}"></td>
             <td th:text="${ingredient.unit}"></td>
@@ -35,7 +34,7 @@
 
 
     <div class="bottomDivBox">
-        <button type="submit" class="button"><a th:href="@{'add_recipe_to_shoppingList/' + ${recipe.name}}">Add recipe to your shopping list</a></button>
+        <button type="submit" class="button"><a th:href="@{'/groceryplus/add_recipe_to_shoppingList/' + ${recipe.name}}">Add recipe to your shopping list</a></button>
     </div>
 
 </body>

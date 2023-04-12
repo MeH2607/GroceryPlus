@@ -152,7 +152,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "DELETE * FROM GroceryPlus.ShoppingList;";
+            String SQL = "DELETE FROM GroceryPlus.ShoppingList;";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(SQL);
         } catch (SQLException e) {
@@ -197,15 +197,21 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
     public void addRecipeToShoppingList(String recipeName) {
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "INSERT INTO ShoppingList (grocery_name, amount, unit) select grocery_name, amount, unit from recipes join recipes_has_groceries using (recipe_name) where recipe_name = ?";
-            PreparedStatement ps = conn.prepareCall(SQL);
+            String SQL = "INSERT INTO ShoppingList (grocery_name, amount, unit) " +
+                    "SELECT grocery_name, amount, unit " +
+                    "FROM recipes " +
+                    "JOIN recipes_has_groceries USING (recipe_name) " +
+                    "WHERE recipe_name = ? " +
+                    "ON DUPLICATE KEY UPDATE " +
+                    "ShoppingList.amount = ShoppingList.amount + VALUES(amount)";
+            PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setString(1, recipeName);
-            ps.executeQuery();
-
-        } catch (Exception e) {
+            ps.executeUpdate();
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     @Override
     public void deleteGroceryFromShoppinglist(String name) {

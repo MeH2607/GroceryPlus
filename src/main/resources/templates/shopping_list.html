@@ -16,7 +16,7 @@
 </head>
 <body style="background-color: #82ac85" ;>
 
-<section class="vh-100" >
+<section class="vh-100">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-1000">
             <div class="col col-lg-9 col-xl-7">
@@ -24,10 +24,10 @@
                     <div class="card-body p-4 " style="background-color: rgba(191,216,196,0.36)">
                         <div class="row justify-content-between mb-3">
                             <div class="col-6">
-                                <button class="btn btn-outline-primary"><a th:href="@{all_recipes}">View all recipes</a></button>
+                                <a class="btn btn-info" th:href="@{all_recipes}">View all recipes</a>
                             </div>
                             <div class="col-6 text-right">
-                                <button class="btn btn-outline-primary"><a th:href="@{all_groceries}">View all groceries</a></button>
+                                <a class="btn btn-info" th:href="@{all_groceries}">View all groceries</a>
                             </div>
                         </div>
                         <h1 class="text-center my-3 pb-3">Shoppinglist</h1>
@@ -49,17 +49,22 @@
                                     <td th:text="${grocery.amount}"></td>
                                     <td th:text="${grocery.unit}"></td>
                                     <td>
-                                        <button type="submit" class="btn btn-sm"><a th:href="@{'delete_grocery_from_shoppinglist/' + ${grocery.name}}">Remove</a></button>
+                                        <a type="button" class="btn btn-danger btn-sm"
+                                           th:href="@{'delete_grocery_from_shoppinglist/' + ${grocery.name}}">Remove</a>
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
-                        </div>
+                            <div class="col-12 text-right">
+                                <a type="button" class="btn btn-danger" th:href="@{'clear_shopping_list'}">Clear
+                                    shoppinglist</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 </body>

@@ -82,9 +82,10 @@ public class GroceryPlusController {
         return "redirect:/groceryplus/shopping_list";
     }
 
-    @GetMapping("add_recipe_to_shoppingList")
+    @GetMapping("add_recipe_to_shoppingList/{recipeName}")
     public String addRecipeToShoppingList(@PathVariable String recipeName) throws GroceryPlusException{
         groceryPlusService.addRecipeToShoppingList(recipeName);
+        System.out.println(recipeName);
         return "redirect:/groceryplus/shopping_list";
     }
 
@@ -95,6 +96,12 @@ public class GroceryPlusController {
         model.addAttribute("list", list);
         return "shopping_list";
     }
+    @GetMapping("clear_shopping_list")
+    public String clearShoppingList() throws GroceryPlusException {
+        groceryPlusService.clearShoppinglist();
+        return "redirect:/groceryplus/shopping_list";
+    }
+
 
     @PostMapping("create_new_recipe")
     public String addRecipe() {
