@@ -198,13 +198,13 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
     public void addRecipeToShoppingList(String recipeName) {
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "INSERT INTO ShoppingList (grocery_name, amount, unit) " +
+            String SQL = "INSERT INTO ShoppingList (grocery_name, cart_amount, unit) " +
                     "SELECT grocery_name, amount, unit " +
                     "FROM recipes " +
                     "JOIN recipes_has_groceries USING (recipe_name) " +
                     "WHERE recipe_name = ? " +
                     "ON DUPLICATE KEY UPDATE " +
-                    "ShoppingList.amount = ShoppingList.amount + VALUES(amount)";
+                    "ShoppingList.cart_amount = ShoppingList.cart_amount + amount";
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setString(1, recipeName);
             ps.executeUpdate();

@@ -33,7 +33,6 @@
                             <tr>
                                 <th scope="col" class="col-6">Grocery</th>
                                 <th scope="col" class="col-1">Amount</th>
-                                <th scope="col" class="col-1">Unit</th>
                                 <th scope="col" class="col-1">Add</th>
                                 <th scope="col" class="col-2">In shoppinglist</th>
                             </tr>
@@ -41,8 +40,7 @@
                             <tbody>
                             <tr th:each="grocery : ${list}">
                                 <td th:text="*{grocery.name}"></td>
-                                <td th:text="*{grocery.amount}"></td>
-                                <td th:text="*{grocery.unit}"></td>
+                                <td th:text="*{grocery.amount + ' ' + grocery.unit}"></td>
                                 <td>
                                     <form action="add_grocery_to_shoppinglist" method="post" th:object="${grocery}">
                                         <input type="hidden" name="name" th:value="*{name}" />
