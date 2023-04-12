@@ -36,6 +36,7 @@
                                 <th scope="col" class="col-1">Amount</th>
                                 <th scope="col" class="col-1">Unit</th>
                                 <th scope="col" class="col-1">Add</th>
+                                <th scope="col" class="col-2">In shoppinglist</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -51,6 +52,7 @@
                                         <button class="btn btn-primary btn-sm" type="submit">Add</button>
                                     </form>
                                 </td>
+                                <td th:text="*{grocery.cartAmount}"></td>
                             </tr>
                             <tr>
                                 <form action="create_new_grocery" method="post" th:object="${grocery}">

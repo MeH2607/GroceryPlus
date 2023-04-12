@@ -43,6 +43,15 @@ public class Grocery {
     public void setUnit(String unit) {
         this.unit = unit;
     }
+
+    public double getCartAmount() {
+        return cartAmount;
+    }
+
+    public void setCartAmount(double cartAmount) {
+        this.cartAmount = cartAmount;
+    }
+
     @Override
     public String toString() {
         return "Grocery{" +
