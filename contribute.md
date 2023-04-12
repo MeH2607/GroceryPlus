@@ -17,6 +17,11 @@ Vores Database er bygget op af 5 relaionelle tabeller
   + brugerens indkøbsliste bestående af en liste af dagligvarer fra groceries.
   + Består af dagligvarens navn som primary key og som en foreign key fra grocerien, samt mængde og mængdeenhed (grocery_name, amount, unit)
 + recipes
-  + En samling 
+  + En samling opskrifter som brugeren  kan åbne op, læse om og tilføje alle den ingredienser til sin shopping list. Opskrifter vil blive delt op i kategorierne standard, gluten free og vegan.
+  + opskrifter består af et navn som primary key, en beskrivelse og en kategori som en foreign key. (recipe_name, description, category_name).
 + categories
-+ recipe_has_categories
+  + En samling af de kategorier som man kan ligge opskrifter i.
+  + består blot af et navn (category_name)
++ recipe_has_groceries
+  + Denne tabel kobler Opskrifter med dagligvarer. Da en opskrift kan bruge mange dagligvarer og dagligvarer kan indgå i flere opskrifter har man brug for en mellemtabel for at understøtte denne mange-til-mange relation.
+  + Består af navne fra groceries og recipes som to foreign keys, same mængde og mængdeenhed. (grocery_name, recipe_name, amount, unit)
