@@ -32,7 +32,7 @@ CREATE TABLE Recipes
 CREATE TABLE ShoppingList
 (
     grocery_name VARCHAR(255) PRIMARY KEY,
-    amount       INT NULL,
+    cart_amount INT NULL,
     unit         VARCHAR(255),
     FOREIGN KEY (grocery_name) REFERENCES Groceries (grocery_name)
 );
@@ -89,8 +89,11 @@ VALUES ('Apple Salad', 'Apples', 3, 'pcs'),
        ('Peanut butter chicken','Galic', 1 , 'pcs'),
        ('Peanut butter chicken','Smooth peanut butter', 500 , 'grams');
 
-INSERT INTO ShoppingList (grocery_name, amount, unit)
+INSERT INTO ShoppingList (grocery_name, cart_amount, unit)
 VALUES ('Apples', 2, 'pcs'),
        ('Carrots', 1, 'pcs'),
        ('Lettuce', 2, 'pcs'),
        ('Tomatoes', 3, 'pcs');
+       
+       SELECT Groceries.grocery_name, amount, Groceries.unit, cart_amount FROM Groceries, ShoppingList WHERE Groceries.grocery_name = shoppinglist.grocery_name;
+       SELECT Groceries.grocery_name, amount, Groceries.unit, cart_amount FROM Groceries JOIN ShoppingList using (grocery_name);
