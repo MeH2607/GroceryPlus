@@ -25,3 +25,6 @@ Vores Database er bygget op af 5 relaionelle tabeller
 + recipe_has_groceries
   + Denne tabel kobler Opskrifter med dagligvarer. Da en opskrift kan bruge mange dagligvarer og dagligvarer kan indgå i flere opskrifter har man brug for en mellemtabel for at understøtte denne mange-til-mange relation.
   + Består af navne fra groceries og recipes som to foreign keys, same mængde og mængdeenhed. (grocery_name, recipe_name, amount, unit)
+
+<h3>Logic</h3>
+GroceyPlus' logik er bygger på Java som bruger  
