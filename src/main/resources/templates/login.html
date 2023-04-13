@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 1500px; /* Change this value to adjust the width */
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #82ac85;
+        }
+
+        .card {
+            width: 150%;
+            max-width: 1500px;
+        }
+
+
+    </style>
+</head>
+<body style="background-color: #82ac85" ;>
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-1000">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card rounded-10">
+                    <div class="card-body p-4 " style="background-color: rgba(191,216,196,0.36)">
+                        <h1 class="text-center my-3 pb-3">Login</h1>
+                        <div class="table-responsive">
+                            <form action="login" method="post">
+                                <p th:if="${wrongCredentials}" class="error">Forkert brugerid eller password</p>
+                                <p><label>UserId:</label>
+                                    <input name="uid" type="text" autofocus></p>
+                                <p><label>Password:</label>
+                                    <input name="pw" type="password"></p>
+                                <p>
+                                    <button type="submit">Login</button>
+                                    <a th:href="@{'/'}">
+                                        <button type="button">Fortryd</button>
+                                    </a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

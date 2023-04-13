@@ -2,8 +2,11 @@ package com.example.groceryplus.controllers;
 
 import com.example.groceryplus.model.Grocery;
 import com.example.groceryplus.model.RecipeDTO;
+import com.example.groceryplus.model.User;
+import com.example.groceryplus.repositories.UserRepository;
 import com.example.groceryplus.services.GroceryPlusException;
 import com.example.groceryplus.services.GroceryPlusService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +17,15 @@ import java.util.List;
 @RequestMapping("groceryplus")
 public class GroceryPlusController {
     private GroceryPlusService groceryPlusService;
+    private UserRepository userRepository;
 
-    public GroceryPlusController(GroceryPlusService groceryPlusService) {
+    public GroceryPlusController(GroceryPlusService groceryPlusService, UserRepository userRepo) {
         this.groceryPlusService = groceryPlusService;
+        this.userRepository = userRepo;
+    }
+
+    private boolean isLoogedIn(HttpSession session) {
+        return session.getAttribute("user") != null;
     }
 
     @GetMapping("")
@@ -24,8 +33,32 @@ public class GroceryPlusController {
         return "index";
     }
 
+    @GetMapping("login")
+    public String showLogin() {
+        // return login form
+        return "login";
+    }
+
+    @PostMapping("login")
+    public String login(@RequestParam("uid") String uid, @RequestParam("pw") String pw,
+                        HttpSession session,
+                        Model model) {
+        // find user in repo - return admin1 if success
+        User user = userRepository.getUser(uid);
+        if (user != null)
+            if (user.getPw().equals(pw)) {
+                // create session for user and set session timeout to 30 sec (container default: 15 min)
+                session.setAttribute("user", user);
+                session.setMaxInactiveInterval(30);
+                return  "redirect:/groceryplus/shopping_list";
+            }
+        // wrong credentials
+        model.addAttribute("wrongCredentials", true);
+        return "login";
+    }
+
     @GetMapping("all_recipes")
-    public String allRecipes(Model model) {
+    public String allRecipes(Model model, HttpSession session) {
         //  List<RecipeDTO> list = groceryPlusService.getAllRecipes();
         // model.addAttribute("list", list);
 
@@ -36,9 +69,7 @@ public class GroceryPlusController {
         model.addAttribute("standardList", standardList);
         model.addAttribute("veganList", veganList);
         model.addAttribute("glutenFreeList", glutenFreeList);
-
-
-        return "all_recipes";
+        return isLoogedIn(session) ? "all_recipes" : "login";
     }
 
     @GetMapping("all_recipes/{recipeName}")
@@ -51,14 +82,14 @@ public class GroceryPlusController {
 
 
     @GetMapping("all_groceries")
-    public String allGroceries(Model model) throws GroceryPlusException {
+    public String allGroceries(Model model, HttpSession session) throws GroceryPlusException {
         Grocery grocery = new Grocery();
         model.addAttribute("grocery", grocery);
 
         List<Grocery> list = groceryPlusService.getAllGroceries();
         System.out.println(list);
         model.addAttribute("list", list);
-        return "all_groceries";
+        return isLoogedIn(session) ? "all_groceries" : "login";
     }
 
     @PostMapping("create_new_grocery")
@@ -83,19 +114,20 @@ public class GroceryPlusController {
     }
 
     @GetMapping("add_recipe_to_shoppingList/{recipeName}")
-    public String addRecipeToShoppingList(@PathVariable String recipeName) throws GroceryPlusException{
+    public String addRecipeToShoppingList(@PathVariable String recipeName) throws GroceryPlusException {
         groceryPlusService.addRecipeToShoppingList(recipeName);
         System.out.println(recipeName);
         return "redirect:/groceryplus/shopping_list";
     }
 
-    @GetMapping("shopping_list")
-    public String shoppingList(Model model) throws GroceryPlusException {
+    @GetMapping("/shopping_list")
+    public String shoppingList(Model model, HttpSession session) throws GroceryPlusException {
         List<Grocery> list = groceryPlusService.getShoppinglist();
         System.out.println(list);
         model.addAttribute("list", list);
-        return "shopping_list";
+        return isLoogedIn(session) ? "shopping_list" : "login";
     }
+
     @GetMapping("clear_shopping_list")
     public String clearShoppingList() throws GroceryPlusException {
         groceryPlusService.clearShoppinglist();
