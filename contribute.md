@@ -27,4 +27,17 @@ Vores Database er bygget op af 5 relaionelle tabeller
   + Består af navne fra groceries og recipes som to foreign keys, same mængde og mængdeenhed. (grocery_name, recipe_name, amount, unit)
 
 <h3>Logic</h3>
-GroceyPlus' logik er bygger på Java som bruger  
+GroceyPlus' logik er bygget på Java som bruger springboot frameworket. Springboot frameworket lader os nemt lave API endpoints som kan tilgås med HTTP protokollen. 
+
+Vi har designet vores kode rundt om Model-View-Controller (MVC) mønsteret der giver et mere overskueligt overblik. Med det har vi fordelt koden i 4 pakker:
+
+- Controller
+- Model
+- repositories
+- services
+
+- Forklar vores klasser
+- kode eksempler
+- dependency injection
+- application.properties
+- klasse diagram
