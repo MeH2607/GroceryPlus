@@ -36,6 +36,8 @@ Vi har designet vores kode rundt om Model-View-Controller (MVC) mønsteret der g
 - repositories
 - services
 
+
+TODO
 - Forklar vores klasser
 - kode eksempler
 - dependency injection
