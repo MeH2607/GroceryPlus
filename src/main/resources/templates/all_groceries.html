@@ -24,6 +24,18 @@
                             <div class="col-6">
                                 <a class="btn btn-info" th:href="@{shopping_list}">View shoppinglist</a>
                             </div>
+                            <tr>
+                                <td colspan="4">
+                                    <form action="/search_groceries" method="get">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="searchTerm" placeholder="Search for groceries😘😉 ">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit">Search</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
 
                         </div>
                         <h1 class="text-center my-3 pb-3">All groceries</h1>
