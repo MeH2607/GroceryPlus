@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public class UserRepository {
     List<User> users = new ArrayList<>(List.of(
-            new User("Asger", "1234")
+            new User("", "")
 
     ));
 
