@@ -49,27 +49,24 @@ GET mapping metoderne henter data fra vores database. De indholder et Model obje
 
 Et kode eksempel på en GET Mapping metode:
 
-<code>
-  
-  @GetMapping("all_recipes/{recipeName}")
-    public String getSingleRecipe(@PathVariable String recipeName, Model model) {
-        RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
-        model.addAttribute("recipe", recipe);
-        return "single_Recipe";}
 
-</code>
+@GetMapping("all_recipes/{recipeName}")
+public String getSingleRecipe(@PathVariable String recipeName, Model model) {
+    RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
+    model.addAttribute("recipe", recipe);
+    return "single_Recipe";
+}
+
 
 POST mapping metoderne sender data, som brugeren inputter fra frontend, til databasen. 
 
 Et kode eksempel på en POST Mapping metode:
 
 <code>
-  
-  @PostMapping("create_new_grocery")
+  "@PostMapping("create_new_grocery")
     public String submitForm(@ModelAttribute("grocery") Grocery grocery) {
         groceryPlusService.addGrocery(grocery);
-        return "redirect:/groceryplus/all_groceries";}
-
+        return "redirect:/groceryplus/all_groceries";}"
 </code>
 
 TODO
