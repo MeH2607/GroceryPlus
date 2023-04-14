@@ -49,7 +49,7 @@ GET mapping metoderne henter data fra vores database. De indholder et Model obje
 
 Et kode eksempel på en GET Mapping metode:
 
-```
+<code>
   @GetMapping("all_recipes/{recipeName}")
     public String getSingleRecipe(@PathVariable String recipeName, Model model) {
 
@@ -59,7 +59,7 @@ Et kode eksempel på en GET Mapping metode:
 
         return "single_Recipe";
     }
-```
+</code>
 
 TODO
 - Forklar vores klasser
