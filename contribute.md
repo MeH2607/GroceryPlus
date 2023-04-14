@@ -53,11 +53,8 @@ Et kode eksempel på en GET Mapping metode:
   
   @GetMapping("all_recipes/{recipeName}")
     public String getSingleRecipe(@PathVariable String recipeName, Model model) {
-
         RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
-
         model.addAttribute("recipe", recipe);
-
         return "single_Recipe";}
 
 </code>
@@ -69,13 +66,8 @@ Et kode eksempel på en POST Mapping metode:
 <code>
   
   @PostMapping("create_new_grocery")
-  
     public String submitForm(@ModelAttribute("grocery") Grocery grocery) {
-  
-        System.out.println(grocery);
-  
         groceryPlusService.addGrocery(grocery);
-  
         return "redirect:/groceryplus/all_groceries";}
 
 </code>
