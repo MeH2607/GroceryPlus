@@ -59,6 +59,17 @@ Et kode eksempel på en GET Mapping metode:
         return "single_Recipe";
     }</code>
 
+POST mapping metoderne sender data, som brugeren inputter fra frontend, til databasen. 
+
+Et kode eksempel på en POST Mapping metode:
+
+<code>@PostMapping("create_new_grocery")
+    public String submitForm(@ModelAttribute("grocery") Grocery grocery) {
+        System.out.println(grocery);
+        groceryPlusService.addGrocery(grocery);
+        return "redirect:/groceryplus/all_groceries";
+    }</code>
+
 TODO
 - Forklar vores klasser
 - kode eksempler
