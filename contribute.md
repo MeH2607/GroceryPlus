@@ -26,6 +26,10 @@ Vores Database er bygget op af 5 relaionelle tabeller
   + Denne tabel kobler Opskrifter med dagligvarer. Da en opskrift kan bruge mange dagligvarer og dagligvarer kan indgå i flere opskrifter har man brug for en mellemtabel for at understøtte denne mange-til-mange relation.
   + Består af navne fra groceries og recipes som to foreign keys, same mængde og mængdeenhed. (grocery_name, recipe_name, amount, unit)
 
+ER diagrammet for vores database giver et overblik over tabellerne og deres relationer:
+
+![ER diagram](/https://github.com/MeH2607/GroceryPlus/blob/main/er%20diagram.PNG?raw=true "ER diagram")
+
 <h3>Logik</h3>
 GroceyPlus' logik er bygget på Java som bruger springboot frameworket. Springboot frameworket lader os nemt lave API endpoints som kan tilgås med HTTP protokollen. 
 
