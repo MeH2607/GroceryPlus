@@ -56,8 +56,7 @@ Et kode eksempel på en GET Mapping metode:
 
         model.addAttribute("recipe", recipe);
 
-        return "single_Recipe";
-    }</code>
+        return "single_Recipe";}</code>
 
 POST mapping metoderne sender data, som brugeren inputter fra frontend, til databasen. 
 
