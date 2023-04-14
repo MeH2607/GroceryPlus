@@ -24,7 +24,7 @@ public class GroceryPlusController {
         this.userRepository = userRepo;
     }
 
-    private boolean isLoogedIn(HttpSession session) {
+    private boolean isLoggedIn(HttpSession session) {
         return session.getAttribute("user") != null;
     }
 
@@ -71,7 +71,7 @@ public class GroceryPlusController {
         model.addAttribute("standardList", standardList);
         model.addAttribute("veganList", veganList);
         model.addAttribute("glutenFreeList", glutenFreeList);
-        return isLoogedIn(session) ? "all_recipes" : "login";
+        return isLoggedIn(session) ? "all_recipes" : "login";
     }
 
     @GetMapping("all_recipes/{recipeName}")
@@ -91,7 +91,7 @@ public class GroceryPlusController {
         List<Grocery> list = groceryPlusService.getAllGroceries();
         System.out.println(list);
         model.addAttribute("list", list);
-        return isLoogedIn(session) ? "all_groceries" : "login";
+        return isLoggedIn(session) ? "all_groceries" : "login";
     }
 
     @PostMapping("create_new_grocery")
@@ -127,7 +127,7 @@ public class GroceryPlusController {
         List<Grocery> list = groceryPlusService.getShoppinglist();
         System.out.println(list);
         model.addAttribute("list", list);
-        return isLoogedIn(session) ? "shopping_list" : "login";
+        return isLoggedIn(session) ? "shopping_list" : "login";
     }
 
     @GetMapping("clear_shopping_list")
