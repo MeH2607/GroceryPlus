@@ -40,7 +40,26 @@ Vi har designet vores kode rundt om Model-View-Controller (MVC) mønsteret der g
 - repositories
 - services
 
+<h4>Controller</h4>
+Controller klassen påtager sig ansvaret for at oprette HTTP Endpoints, hente data fra vores repository klasser og sende data til vores Frontend view.
 
+Hver metode i controller har enten en GET mapping eller en POST mapping
+
+GET mapping metoderne henter data fra vores database. De indholder et Model objekt som parameter som har til formål at sende data til frontend. Vi henter data fra metoder fra Service klassen og tilføjer dem til model via model.addAttribute() metoden, som skal indholde et kaldenavn for når frontend skal hente dataen, og selve dataen.
+
+Et kode eksempel på en GET Mapping metode:
+
+```
+  @GetMapping("all_recipes/{recipeName}")
+    public String getSingleRecipe(@PathVariable String recipeName, Model model) {
+
+        RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
+
+        model.addAttribute("recipe", recipe);
+
+        return "single_Recipe";
+    }
+```
 
 TODO
 - Forklar vores klasser
