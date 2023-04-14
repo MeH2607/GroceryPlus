@@ -13,10 +13,17 @@ import java.util.List;
 @Repository("GroceryPlusDB")
 public class GroceryPlusRepository implements iGroceryPlusRepository {
 
-    //TODO Asger: Implement this class
+
+    /*
+    Laver en liste over alle RecipeDTO's, fra db.
+    RecipeDTO er al nødvendig data for at vise en opskrift
+     */
+
     @Override
     public List<RecipeDTO> getRecipeDTOs() {
         List<RecipeDTO> list = new ArrayList<>();
+
+        // Henter relevante tables fra db, joines med recipe_name, og lægges i listen
         try {
             Connection conn = ConnectionManager.getConnection();
             String SQL = "select * from recipes join recipes_has_groceries using (recipe_name)";
@@ -29,13 +36,16 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
             while (rs.next()) {
 
-                // tjekker hvis opskriften allerede findes. Hvis den ikke gør, så laver den et nyt opskrift objekt.
                 String recipeName = rs.getString("recipe_name");
                 String description = rs.getString("description");
 
                 String groceryName = rs.getString("grocery_name");
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
+
+                /*
+                Her lægges groceries til i recipeDTO'en, og et ny RecipeDTO oprettes hvis den ikke eksisterer fra før.
+                 */
 
                 if (recipeName.equals(currentRecipeName)) {
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
@@ -57,10 +67,16 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
     }
 
 
+    /*
+    Henter alle groceries fra groceryList og shoppingList.
+    ShoppingList skal bruges fordi vi ønsker at vise hvor mange af en grocery der findes i shoppinglisten,
+    når man kigger på all_groceries i appen.
+     */
     @Override
     public List<Grocery> getAllGroceries() throws GroceryPlusException {
         List<Grocery> groceryList = new ArrayList();
-        List<Grocery> shoppingList = new ArrayList();
+
+        // Henter alle groceries fra db og lægger dem i groceryList
         try {
             Connection conn = ConnectionManager.getConnection();
             String SQL = "SELECT * FROM Groceries";
@@ -74,11 +90,13 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 groceryList.add(new Grocery(name, amount, unit));
             }
 
-
+            //
             String SQL2 = "SELECT grocery_name, cart_amount FROM ShoppingList";
             rs = stmt.executeQuery(SQL2);
 
+            // itererer shoppingList tablet
             while (rs.next()) {
+                // itererer groceryList og opdaterer cart_amount hvis groceryen findes i shoppinglist
                 for (Grocery grocery : groceryList) {
                     if(rs.getString("grocery_name").equals(grocery.getName())){
                         grocery.setCartAmount(rs.getDouble("cart_amount"));
@@ -86,7 +104,6 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                     }
                 }
             }
-
 
             return groceryList;
         } catch (SQLException e) {
@@ -99,6 +116,8 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
     }
 
+
+    // Bruges til at oprette og tilføje en ny grocery til systemet og db
     @Override
     public void addGrocery(Grocery grocery) {
         try {
@@ -117,9 +136,10 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
     }
 
+    // Henter shoppingList
     @Override
     public List<Grocery> getShoppinglist() throws GroceryPlusException {
-        List<Grocery> groceryList = new ArrayList();
+        List<Grocery> shoppingList = new ArrayList();
 
         try {
             Connection conn = ConnectionManager.getConnection();
@@ -132,24 +152,27 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                 double amount = rs.getDouble("cart_amount");
                 String unit = rs.getString("unit");
 
-                groceryList.add(new Grocery(name, amount, unit));
+                shoppingList.add(new Grocery(name, amount, unit));
             }
 
-            return groceryList;
+            return shoppingList;
         } catch (SQLException e) {
             throw new GroceryPlusException(e.getMessage());
-
         }
-
     }
 
+    // Tilføjer en grocery til shoppinglisten
     @Override
     public void addGroceryToShoppinglist(Grocery grocery) throws GroceryPlusException {
         try {
             Connection conn = ConnectionManager.getConnection();
-            String SQL = "INSERT INTO GroceryPlus.ShoppingList (grocery_name, cart_amount, unit) " +
+            // Tilføjer grocery til shoppinglist.
+            String SQL = "INSERT INTO ShoppingList (grocery_name, cart_amount, unit) " +
+                    // Groceryet som tilføjes får aliaset "new" så vi kan referere til det senere i queryen.
                     "VALUES (?, ?, ?) AS new " +
-                    "ON DUPLICATE KEY UPDATE GroceryPlus.ShoppingList.cart_amount = GroceryPlus.ShoppingList.cart_amount + new.cart_amount;";
+                    // Her oppdateres cart_amount HVIS der er en duplicate key (grocery_name),
+                    // altså vi lægger det cart_amount, istedet for at lave en duplikat af groceryet
+                    "ON DUPLICATE KEY UPDATE ShoppingList.cart_amount = ShoppingList.cart_amount + new.cart_amount;";
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setString(1, grocery.getName());
             ps.setDouble(2, grocery.getAmount());
@@ -162,9 +185,9 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
     }
 
+    // Fjerner alle groceries fra shoppinglisten, simpel SQL query
     @Override
-    public void clearShoppinglist() throws GroceryPlusException { //metode som sletter shoppinglist row i SQL
-
+    public void clearShoppinglist() throws GroceryPlusException {
         try {
             Connection conn = ConnectionManager.getConnection();
             String SQL = "DELETE FROM GroceryPlus.ShoppingList;";
@@ -176,6 +199,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
     }
 
 
+    // Henter recipeDTO for én specifik opskrift (recipeNameSearch)
     public RecipeDTO getSingleRecipeDTO(String recipeNameSearch) {
 
         try {
@@ -188,15 +212,13 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
 
             RecipeDTO currentRecipeDTO = null;
             while (rs.next()) {
-
-                // tjekker hvis opskriften allerede findes. Hvis den ikke gør, så laver den et nyt opskrift objekt.
                 String recipeName = rs.getString("recipe_name");
                 String description = rs.getString("description");
-
                 String groceryName = rs.getString("grocery_name");
                 double amount = rs.getDouble("amount");
                 String unit = rs.getString("unit");
 
+                // tjekker om opskriften allerede findes. Hvis den ikke gør, så laver den et nyt opskrift objekt.
                 if (currentRecipeDTO == null) {
                     currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
                 }
@@ -209,6 +231,7 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
         }
     }
 
+    // Tilføjer alle groceryes i en opskrift til shoppinglisten
     public void addRecipeToShoppingList(String recipeName) {
         try {
             Connection conn = ConnectionManager.getConnection();
