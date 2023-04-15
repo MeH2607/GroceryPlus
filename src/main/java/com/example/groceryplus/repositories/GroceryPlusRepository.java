@@ -273,13 +273,6 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
                 }
 
-               /* if (!list.contains(currentRecipeDTO)) {
-                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
-                }
-                                currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
-                */
-
-
                 if (!list.contains(currentRecipeDTO))
                     list.add(currentRecipeDTO);
             }
@@ -319,14 +312,6 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                     currentRecipeName = recipeName;
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
                 }
-
-               /* if (!list.contains(currentRecipeDTO)) {
-                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
-                }
-                                currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
-                */
-
-
                 if (!list.contains(currentRecipeDTO))
                     list.add(currentRecipeDTO);
             }
@@ -366,14 +351,6 @@ public class GroceryPlusRepository implements iGroceryPlusRepository {
                     currentRecipeName = recipeName;
                     currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
                 }
-
-               /* if (!list.contains(currentRecipeDTO)) {
-                    currentRecipeDTO = new RecipeDTO(recipeName, description, new ArrayList<>());
-                }
-                                currentRecipeDTO.addGrocery(new Grocery(groceryName, amount, unit));
-                */
-
-
                 if (!list.contains(currentRecipeDTO))
                     list.add(currentRecipeDTO);
             }
