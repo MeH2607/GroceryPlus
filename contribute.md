@@ -95,15 +95,35 @@ User klassen repræsenterer brugeren som logger ind for at bruge programmet. Use
 
 
 <h4>Repository</h4>
-Repository pakken indeholder den logik der ligger bag vores CRUD metoder. Vi bruger JDBC api'en til at muliggøre kommunikation mellem Java og vores database. Dette gøres med Statement og PreparedStatement klasserne fra JDBC api'en, som lader os sende SQL queries og modtage data som konveteres til java. 
+Repository pakken indeholder den logik der ligger bag vores CRUD metoder. Vi bruger JDBC api'en til at muliggøre kommunikation mellem Java og vores database.
+
+Repository pakken indeholder Repository interfacet, som bestemmer de metoder repository klasserne skal implementere. I praksis vil vi have en Stub repository og en database repository. Ved hjælp af dependency injection ville man nemt vælge hvilken repository man vil anvende i controller.
+
+Kommunikationen til databasen gøres med Statement og PreparedStatement klasserne fra JDBC api'en, som lader os sende SQL queries og modtage data som konveteres til java. 
 
 Statement bruges når vi vil sende en SQL query uden noget ekstra input. Her er et eksempel:
-
 <img src=https://user-images.githubusercontent.com/113069009/232226273-0b63c3b1-76d8-41dd-a6bc-5e4e67910c25.png width="350" title="Statement eksempel">
 
 Når vi vil sende et input med til databasen skal vi bruge PreparedStatement. Her er et eksempel på et PreparedStatement:
-
 <img src=https://user-images.githubusercontent.com/113069009/232237079-15693478-4a88-4fec-b180-1c00b762d4a9.png width="350" title="Statement eksempel">
+
+
+<h5>Connection manager og Application.properties</h5>
+Connection manageren har til formål at oprette forbindelsen til vores database. Det gør den ved hjælp af getConnection() metoden:
+```java
+   public static Connection getConnection(){
+        try {
+            if (conn == null) conn = DriverManager.getConnection(URL,USER,PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return conn;
+    }
+```
+
+
+<h4>Service</h4>
+Service klassen har til opgave at forbinde repository og controller. 
 
 
 TODO
