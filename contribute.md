@@ -101,6 +101,10 @@ Statement bruges når vi vil sende en SQL query uden noget ekstra input. Her er 
 
 <img src=https://user-images.githubusercontent.com/113069009/232226273-0b63c3b1-76d8-41dd-a6bc-5e4e67910c25.png width="350" title="Statement eksempel">
 
+Når vi vil sende et input med til databasen skal vi bruge PreparedStatement. Her er et eksempel på et PreparedStatement:
+
+<img src=https://user-images.githubusercontent.com/113069009/232237079-15693478-4a88-4fec-b180-1c00b762d4a9.png width="350" title="Statement eksempel">
+
 
 TODO
 - Forklar vores klasser
