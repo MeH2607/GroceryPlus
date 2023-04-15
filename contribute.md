@@ -93,6 +93,15 @@ User klassen repræsenterer brugeren som logger ind for at bruge programmet. Use
 
 <img src=https://user-images.githubusercontent.com/113069009/232223786-3ca2c62f-78e7-47b0-a89f-64bd7c6c113a.png width="300" title="User Class">
 
+
+<h4>Repository</h4>
+Repository pakken indeholder den logik der ligger bag vores CRUD metoder. Vi bruger JDBC api'en til at muliggøre kommunikation mellem Java og vores database. Dette gøres med Statement og PreparedStatement klasserne fra JDBC api'en, som lader os sende SQL queries og modtage data som konveteres til java. 
+
+Statement bruges når vi vil sende en SQL query uden noget ekstra input. Her er et eksempel:
+ ![Statement](https://user-images.githubusercontent.com/113069009/232226273-0b63c3b1-76d8-41dd-a6bc-5e4e67910c25.png)
+
+
+
 TODO
 - Forklar vores klasser
 - kode eksempler
