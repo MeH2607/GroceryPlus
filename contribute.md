@@ -70,6 +70,30 @@ Et kode eksempel på en POST Mapping metode:
         return "redirect:/groceryplus/all_groceries";}"
 ```
 
+<h4>Model</h4>
+Model pakken indeholder vores model klasser som repræsenterer de objekter fra "virkeligheden". Alle modelklasser har getters og setters for hver attribut, *som kræves for at kunne bevæge objekterne via thymeleaf(?)* Vores 3 model klasser er:
+- Grocery
+- User
+- RecipeDTO
+
+<h5>Grocery</h5> 
+Grocery klassen repræsenterer de råvarer som brugeren kan se og tilføje til deres shopping list. 
+Variablen cartAmount viser hvor mange af den enkelte grocery som er i shoppinglist. Alt efter hvor man opretter Grocery objektet kan man instantiere cartAmount i parameteren eller default den til 0.
+
+<img src=https://user-images.githubusercontent.com/113069009/232223941-c2f0cae1-a6d4-4f1c-a633-6cc60fa95d14.png width="300" title="Grocery Class">
+
+<h5>RecipeDTO</h5>
+RecipeDTO klassen repræsenterer de opskrifter brugeren kan finde. RecipeDTO indeholder en liste af Grocery objekter til at repræsentere ingredienserne.
+
+<img src=https://user-images.githubusercontent.com/113069009/232223109-7181fb8f-92c5-49a8-93d7-70d3a842cbdf.png width="300" title="RecipeDTO Class">
+
+<h5>User</h5>
+User klassen repræsenterer brugeren som logger ind for at bruge programmet. User klassen består af en default constructor og defineres i controller. Klassen og login funktion er for nu mere et "proof of concept" end en reel login løsning.
+
+![image](https://user-images.githubusercontent.com/113069009/232223786-3ca2c62f-78e7-47b0-a89f-64bd7c6c113a.png)
+
+<img src=https://user-images.githubusercontent.com/113069009/232223786-3ca2c62f-78e7-47b0-a89f-64bd7c6c113a.png width="300" title="User Class">
+
 TODO
 - Forklar vores klasser
 - kode eksempler
