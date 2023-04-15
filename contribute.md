@@ -28,7 +28,8 @@ Vores Database er bygget op af 5 relaionelle tabeller
 
 ER diagrammet for vores database giver et overblik over tabellerne og deres relationer:
 
-![ER diagram](/https://raw.githubusercontent.com/MeH2607/GroceryPlus/main/er%20diagram.PNG "ER diagram")
+<img src=https://user-images.githubusercontent.com/113069009/232224057-2c056ec1-95e3-46fb-9081-dc15f660f7b7.png width="400" title="ER Diagram">
+
 
 <h3>Logik</h3>
 GroceyPlus' logik er bygget på Java som bruger springboot frameworket. Springboot frameworket lader os nemt lave API endpoints som kan tilgås med HTTP protokollen. 
@@ -89,8 +90,6 @@ RecipeDTO klassen repræsenterer de opskrifter brugeren kan finde. RecipeDTO ind
 
 <h5>User</h5>
 User klassen repræsenterer brugeren som logger ind for at bruge programmet. User klassen består af en default constructor og defineres i controller. Klassen og login funktion er for nu mere et "proof of concept" end en reel login løsning.
-
-![image](https://user-images.githubusercontent.com/113069009/232223786-3ca2c62f-78e7-47b0-a89f-64bd7c6c113a.png)
 
 <img src=https://user-images.githubusercontent.com/113069009/232223786-3ca2c62f-78e7-47b0-a89f-64bd7c6c113a.png width="300" title="User Class">
 
