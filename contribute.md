@@ -110,6 +110,7 @@ Når vi vil sende et input med til databasen skal vi bruge PreparedStatement. He
 
 <h5>Connection manager og Application.properties</h5>
 Connection manageren har til formål at oprette forbindelsen til vores database. Det gør den ved hjælp af getConnection() metoden:
+
 ```java
    public static Connection getConnection(){
         try {
@@ -121,6 +122,15 @@ Connection manageren har til formål at oprette forbindelsen til vores database.
     }
 ```
 
+URL, USER og PASSWORD bliver defineret i application.properties filen under Ressources mappen. I den fil skal man indsætte disse 3 linjer med ens SQL Workbench brugernavn, root kode og navnet på databasen. Det er også her at man laver dependency injection og peger på den repository man vil anvende:
+
+```java
+spring.datasource.url= database url
+spring.datasource.username= root username
+spring.datasource.password= root password
+
+groceryplus.repository = repository klasse
+```
 
 <h4>Service</h4>
 Service klassen har til opgave at forbinde repository og controller. 
