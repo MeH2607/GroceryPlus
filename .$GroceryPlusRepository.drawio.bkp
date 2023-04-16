@@ -1,0 +1,72 @@
+<mxfile host="Electron" modified="2023-04-16T12:49:20.662Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" version="21.1.2" etag="isjgh4Gsyi9MtYEc2U6l" type="device">
+  <diagram id="QDvlEt38EGh6kflAVvEt" name="Side-1">
+    <mxGraphModel dx="2003" dy="1811" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cmNELiZQkvIuMaiXwHj--9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="node8" target="node3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ConnectionManager&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;- conn: Connection&lt;br/&gt;- PASSWORD: String&lt;br/&gt;- URL: String&lt;br/&gt;- USER: String&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ setUrl(String): void&lt;br/&gt;+ getConnection(): Connection&lt;br/&gt;+ setUser(String): void&lt;br/&gt;+ setPassword(String): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="1402.5" y="1850" width="240" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="cmNELiZQkvIuMaiXwHj--15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="node9" target="node3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Grocery&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;- name: String&lt;br/&gt;- amount: double&lt;br/&gt;- unit: String&lt;br/&gt;- cartAmount: double&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ setCartAmount(double): void&lt;br/&gt;+ getUnit(): String&lt;br/&gt;+ toString(): String&lt;br/&gt;+ getAmount(): double&lt;br/&gt;+ getCartAmount(): double&lt;br/&gt;+ getName(): String&lt;br/&gt;+ setUnit(String): void&lt;br/&gt;+ setName(String): void&lt;br/&gt;+ setAmount(double): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="1860" y="1090" width="249" height="363" as="geometry" />
+        </mxCell>
+        <mxCell id="node7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GroceryPlusApplication&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ main(String[]): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="997.5" y="-70" width="245" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="node2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GroceryPlusController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;- groceryPlusService: GroceryPlusService&lt;br/&gt;- userRepository: UserRepository&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ clearShoppingList(): String&lt;br/&gt;+ getSingleRecipe(String, Model): String&lt;br/&gt;+ index(): String&lt;br/&gt;+ allGroceries(Model, HttpSession): String&lt;br/&gt;+ deleteGroceryFromShoppinglist(String): String&lt;br/&gt;+ login(String, String, HttpSession, Model): String&lt;br/&gt;+ submitForm(Grocery): String&lt;br/&gt;+ addRecipe(): String&lt;br/&gt;+ allRecipes(Model, HttpSession): String&lt;br/&gt;+ showLogin(): String&lt;br/&gt;+ addRecipeToShoppingList(String): String&lt;br/&gt;- isLoogedIn(HttpSession): boolean&lt;br/&gt;+ addGroceryToShoppinglist(Grocery): String&lt;br/&gt;+ shoppingList(Model, HttpSession): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="950" y="171" width="340" height="429" as="geometry" />
+        </mxCell>
+        <mxCell id="cmNELiZQkvIuMaiXwHj--8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="node3" target="node1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GroceryPlusRepository&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getVeganList(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ addRecipeToShoppingList(String): void&lt;br/&gt;+ deleteGroceryFromShoppinglist(String): void&lt;br/&gt;+ getAllGroceries(): List&amp;lt;Grocery&amp;gt;&lt;br/&gt;+ clearShoppinglist(): void&lt;br/&gt;+ addGroceryToShoppinglist(Grocery): void&lt;br/&gt;+ getShoppinglist(): List&amp;lt;Grocery&amp;gt;&lt;br/&gt;+ getSingleRecipeDTO(String): RecipeDTO&lt;br/&gt;+ createRecipe(RecipeDTO): void&lt;br/&gt;+ addGrocery(Grocery): void&lt;br/&gt;+ getStandardList(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ getGlutenFreeList(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ getRecipeDTOs(): List&amp;lt;RecipeDTO&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="1360" y="1360" width="325" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="cmNELiZQkvIuMaiXwHj--6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="node5" target="node2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GroceryPlusService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;- groceryPlusRepository: iGroceryPlusRepository&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getShoppinglist(): List&amp;lt;Grocery&amp;gt;&lt;br/&gt;+ addGrocery(Grocery): void&lt;br/&gt;+ addRecipeToShoppingList(String): void&lt;br/&gt;+ getSingleRecipe(String): RecipeDTO&lt;br/&gt;+ createRecipe(RecipeDTO): void&lt;br/&gt;+ getGlutenFreeList(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ getAllRecipes(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ getAllGroceries(): List&amp;lt;Grocery&amp;gt;&lt;br/&gt;+ addGroceryToShoppinglist(Grocery): void&lt;br/&gt;+ deleteGroceryFromShoppinglist(String): void&lt;br/&gt;+ getVeganList(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ getStandardList(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ clearShoppinglist(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="1460" y="580" width="324" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="cmNELiZQkvIuMaiXwHj--16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node0" target="node3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node0" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;RecipeDTO&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;- name: String&lt;br/&gt;- description: String&lt;br/&gt;- ingredients: List&amp;lt;Grocery&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ setName(String): void&lt;br/&gt;+ setIngredients(List&amp;lt;Grocery&amp;gt;): void&lt;br/&gt;+ getDescription(): String&lt;br/&gt;+ getIngredients(): List&amp;lt;Grocery&amp;gt;&lt;br/&gt;+ setDescription(String): void&lt;br/&gt;+ getName(): String&lt;br/&gt;+ toString(): String&lt;br/&gt;+ addGrocery(Grocery): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="1860" y="1550" width="275" height="344" as="geometry" />
+        </mxCell>
+        <mxCell id="cmNELiZQkvIuMaiXwHj--12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node4" target="node6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cmNELiZQkvIuMaiXwHj--17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="node4" target="node3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;User&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;- pw: String&lt;br/&gt;- uid: String&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getPw(): String&lt;br/&gt;+ getUid(): String&lt;br/&gt;+ toString(): String&lt;br/&gt;+ setPw(String): void&lt;br/&gt;+ setUid(String): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="964.5" y="1670" width="154" height="218" as="geometry" />
+        </mxCell>
+        <mxCell id="cmNELiZQkvIuMaiXwHj--10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.001;entryY=0.467;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="node6" target="node2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;UserRepository&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;~ users: List&amp;lt;User&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getUser(String): User&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="1360" width="208" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="cmNELiZQkvIuMaiXwHj--4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="node1" target="node5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1621.9999999999995" y="970" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="node1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br/&gt;&lt;b&gt;iGroceryPlusRepository&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt;+ getStandardList(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ getRecipeDTOs(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ getSingleRecipeDTO(String): RecipeDTO&lt;br/&gt;+ getGlutenFreeList(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ addRecipeToShoppingList(String): void&lt;br/&gt;+ addGrocery(Grocery): void&lt;br/&gt;+ getAllGroceries(): List&amp;lt;Grocery&amp;gt;&lt;br/&gt;+ createRecipe(RecipeDTO): void&lt;br/&gt;+ getVeganList(): List&amp;lt;RecipeDTO&amp;gt;&lt;br/&gt;+ getShoppinglist(): List&amp;lt;Grocery&amp;gt;&lt;br/&gt;+ clearShoppinglist(): void&lt;br/&gt;+ addGroceryToShoppinglist(Grocery): void&lt;br/&gt;+ deleteGroceryFromShoppinglist(String): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="964.5" y="900" width="311" height="374" as="geometry" />
+        </mxCell>
+        <mxCell id="cmNELiZQkvIuMaiXwHj--2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="node5" target="node5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
