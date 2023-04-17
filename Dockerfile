@@ -3,12 +3,13 @@ FROM lakruzz/lamj:latest
 # ENV MYSQL_ROOT_PASSWORD=root
 
 ENV PORT=8080
+ENV PROFILE=${PROFILE:-prod}
 # ENV MYSQL_PORT=3306
 
 COPY src /src
 COPY pom.xml /pom.xml
 RUN set -ex; \
-     mvn -f /pom.xml clean package; \
+     mvn -f /pom.xml -Dspring.profiles.active=${PROFILE} clean package; \
      mv /target/*.jar /app/; \
      rm -rf /target; \
      rm -rf /src; \
@@ -21,13 +22,14 @@ EXPOSE $PORT
 
 CMD set -eux; \
    # lamj.init.sh; \
-    java -jar /app/*.jar;
+    #java -jar /app/*.jar;
+    java -jar -Dspring.profiles.active=${PROFILE} /app/*.jar;
 
 # Build like this:
-# docker build  -t GroceryPlus .
+# docker build  -t groceryplus .
 
 # Run like this:
-# docker run -it --rm --name GroceryPlus --pid=host -p 8080:8080 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root GroceryPlus
+# docker run -it --rm --name groceryplus --pid=host -p 8080:8080 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root groceryplus
 #
 #   - `docker run`: This command is used to run a container from an image.
 #   - `-it`: This switch allocates a pseudo-TTY and opens an interactive terminal within the container.
