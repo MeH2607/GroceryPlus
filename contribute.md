@@ -135,6 +135,18 @@ groceryplus.repository = repository klasse
 <h4>Service</h4>
 Service klassen har til opgave at forbinde repository og controller. 
 
+<h3>Frontend</h3>
+Vores frontend er bygget op af HTML og Bootstrap biblioteket, og bruger Thymeleaf API'en til at sende og modtage data til og fra databasen via JDBC. 
+
+Bootstrap er et praktisk bibliotek til at finde CSS skabeloner som man kan hive ind i sin HTML side.
+Når man opretter en HTML side skal man tilføje dette stykke til HTML headeren:
+```HTML 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+```
+Bootstrap elementer hentes ned som en class inline i HTML tagget eks: ```HTML <div class="card-deck">```
+
 
 TODO
 - Forklar vores klasser
