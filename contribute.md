@@ -102,9 +102,11 @@ Repository pakken indeholder Repository interfacet, som bestemmer de metoder rep
 Kommunikationen til databasen gøres med Statement og PreparedStatement klasserne fra JDBC api'en, som lader os sende SQL queries og modtage data som konveteres til java. 
 
 Statement bruges når vi vil sende en SQL query uden noget ekstra input. Her er et eksempel:
+
 <img src=https://user-images.githubusercontent.com/113069009/232226273-0b63c3b1-76d8-41dd-a6bc-5e4e67910c25.png width="350" title="Statement eksempel">
 
 Når vi vil sende et input med til databasen skal vi bruge PreparedStatement. Her er et eksempel på et PreparedStatement:
+
 <img src=https://user-images.githubusercontent.com/113069009/232237079-15693478-4a88-4fec-b180-1c00b762d4a9.png width="350" title="Statement eksempel">
 
 
@@ -138,19 +140,38 @@ Service klassen har til opgave at forbinde repository og controller.
 <h3>Frontend</h3>
 Vores frontend er bygget op af HTML og Bootstrap biblioteket, og bruger Thymeleaf API'en til at sende og modtage data til og fra databasen via JDBC. 
 
+
+<h4>Bootstrap</h4>
 Bootstrap er et praktisk bibliotek til at finde CSS skabeloner som man kan hive ind i sin HTML side.
 Når man opretter en HTML side skal man tilføje dette stykke til HTML headeren:
-```HTML 
+
+```html
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
 ```
-Bootstrap elementer hentes ned som en class inline i HTML tagget eks: ```HTML <div class="card-deck">```
 
+Bootstrap elementer hentes ned som en class inline i HTML tagget eks: ```<div class="card-deck">```
+For at finde Bootstrap elementer kan man finde dem i deres dokumenation i https://getbootstrap.com/docs/5.3/getting-started/introduction/. 
 
-TODO
-- Forklar vores klasser
-- kode eksempler
-- dependency injection
-- application.properties
-- klasse diagram
+<h4>Thymeleaf</h4>
+Thymeleaf er den API vi bruger til at sende og modtage data fra databasen. 
+Thymeleaf modtager data fra Java controlleren via Model klassen. Vi bruger .addAttribute() metoden fra Model klassen til at tilføje et java objekt som en attribut der kan sendes og modtages i HTML. Her er et eksempel på en Controller metode der bruger .addAttribute():
+
+```Java
+ @GetMapping("all_recipes/{recipeName}")
+    public String getSingleRecipe(@PathVariable String recipeName, Model model) {
+        RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
+        model.addAttribute("recipe", recipe);
+        return "single_Recipe";
+    } 
+```
+
+recipe er det java objekt vi får fra groceryPlusService hvor "recipe" er den måde objektet vil blive refereret til i HTML.
+Nu kan man hente objektet til sin HTML side ved at bruge TH: keywordet, her et et eksempel:
+
+```html 
+<div class="card-body"> 
+<h3 class="text-center my-3 pb-3" th:text="${recipe.name}">
+</h3> <p class="card-text" align="center" th:text="${recipe.description}"></p> 
+</div>```
