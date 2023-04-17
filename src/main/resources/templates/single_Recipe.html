@@ -1,41 +1,67 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="${recipe.name}"></title>
-    <link th:href="@{/single_Recipe_style.css}" rel="stylesheet">
-
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 1500px; /* Change this value to adjust the width */
+        }
+    </style>
 </head>
-<body>
-<h1 th:text="${recipe.name}"></h1>
+<body style="background-color: #82ac85" ;>
 
-   <button><a th:href="@{/groceryplus/all_recipes}">Return to recipe list</a></button>
-
-
-<div class="descriptionBox" align="center">
-    <p th:text="${recipe.description}"></p>
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-1000">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card rounded-10">
+                    <div class="card-body p-4 " style="background-color: rgba(191,216,196,0.36)">
+                        <div class="row justify-content-between mb-3">
+                            <div class="col-1 text-right">
+                                <a class="btn btn-info" th:href="@{/groceryplus/all_recipes}">Return to recipe list</a>
+                            </div>
+                        </div>
+                        <div class="card border-info mb-3" align="center"  style="width: 28rem;">
+                            <img class="card-img-top" src="..." alt="Card image cap">
+                            <div class="card-body">
+                                <h3 class="text-center my-3 pb-3" th:text="${recipe.name}"></h3>
+                                <p class="card-text" align="center" th:text="${recipe.description}"></p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <table class="table table-bordered" align="center" style="max-width: 80%;">
+                                    <thead class="">
+                                    <tr>
+                                        <th>Ingredient</th>
+                                        <th>Amount</th>
+                                        <th>Unit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="ingredient : ${recipe.ingredients}">
+                                        <td th:text="${ingredient.name}"></td>
+                                        <td th:text="${ingredient.amount}"></td>
+                                        <td th:text="${ingredient.unit}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </ul>
+                        </div>
+                        <div class="col-12 text-right">
+                            <a type="button" class="btn btn-success"
+                               th:href="@{'/groceryplus/add_recipe_to_shoppingList/' + ${recipe.name}}">Add
+                                recipe to your shopping list</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <table>
-        <thead>
-        <tr>
-            <th>Ingredient</th>
-            <th>Amount</th>
-            <th>Unit</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="ingredient : ${recipe.ingredients}">
-            <td th:text="${ingredient.name}"></td>
-            <td th:text="${ingredient.amount}"></td>
-            <td th:text="${ingredient.unit}"></td>
-        </tr>
-        </tbody>
-    </table>
-
-
-    <div class="bottomDivBox">
-        <button type="submit" class="button"><a th:href="@{'/groceryplus/add_recipe_to_shoppingList/' + ${recipe.name}}">Add recipe to your shopping list</a></button>
     </div>
-
+</section>
 </body>
 </html>

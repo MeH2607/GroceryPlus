@@ -57,6 +57,7 @@ public class GroceryPlusController {
         return "login";
     }
 
+
     @GetMapping("all_recipes")
     public String allRecipes(Model model, HttpSession session) {
         //  List<RecipeDTO> list = groceryPlusService.getAllRecipes();
@@ -65,7 +66,6 @@ public class GroceryPlusController {
         List<RecipeDTO> standardList = groceryPlusService.getStandardList();
         List<RecipeDTO> veganList = groceryPlusService.getVeganList();
         List<RecipeDTO> glutenFreeList = groceryPlusService.getGlutenFreeList();
-
         model.addAttribute("standardList", standardList);
         model.addAttribute("veganList", veganList);
         model.addAttribute("glutenFreeList", glutenFreeList);
@@ -73,11 +73,10 @@ public class GroceryPlusController {
     }
 
     @GetMapping("all_recipes/{recipeName}")
-    public String getSingleRecipe(@PathVariable String recipeName, Model model) {
+    public String getSingleRecipe(@PathVariable String recipeName, Model model , HttpSession session) {
         RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
         model.addAttribute("recipe", recipe);
-
-        return "single_Recipe";
+        return isLoogedIn(session) ? "single_Recipe" : "redirect:/groceryplus/login";
     }
 
 
@@ -93,10 +92,10 @@ public class GroceryPlusController {
     }
 
     @PostMapping("create_new_grocery")
-    public String submitForm(@ModelAttribute("grocery") Grocery grocery) {
+    public String submitForm(@ModelAttribute("grocery") Grocery grocery, HttpSession session) throws GroceryPlusException {
         System.out.println(grocery);
         groceryPlusService.addGrocery(grocery);
-        return "redirect:/groceryplus/all_groceries";
+        return isLoogedIn(session) ? "redirect:/groceryplus/all_groceries" : "login";
     }
 
     @PostMapping("add_grocery_to_shoppinglist")
