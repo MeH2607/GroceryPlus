@@ -17,15 +17,23 @@ public class GroceryPlusService {
         groceryPlusRepository = (iGroceryPlusRepository) context.getBean(impl);
     }
 
-    public List<RecipeDTO> getAllRecipes(){
+    public List<RecipeDTO> getAllRecipes() {
         return groceryPlusRepository.getRecipeDTOs();
-    };
-    public List<Grocery> getAllGroceries() throws GroceryPlusException{
+    }
+
+    ;
+
+    public List<Grocery> getAllGroceries() throws GroceryPlusException {
         return groceryPlusRepository.getAllGroceries();
-    };
-    public void createRecipe(RecipeDTO recipeDTO){
+    }
+
+    ;
+
+    public void createRecipe(RecipeDTO recipeDTO) {
         groceryPlusRepository.createRecipe(recipeDTO);
-    };
+    }
+
+    ;
 
 
     /*
@@ -39,38 +47,54 @@ public class GroceryPlusService {
         groceryPlusRepository.createGrocery(grocery);
     };
      */
-    public List<Grocery> getShoppinglist() throws GroceryPlusException{
+    public List<Grocery> getShoppinglist() throws GroceryPlusException {
         return groceryPlusRepository.getShoppinglist();
-    };
+    }
+
+    ;
 
     public void addGrocery(Grocery grocery) {
         groceryPlusRepository.addGrocery(grocery);
     }
-    public void addGroceryToShoppinglist(Grocery grocery) throws GroceryPlusException{
-        groceryPlusRepository.addGroceryToShoppinglist(grocery);
-    };
-    public void clearShoppinglist() throws GroceryPlusException{
-        groceryPlusRepository.clearShoppinglist();
-    };
-    public void deleteGroceryFromShoppinglist(String name){
-        groceryPlusRepository.deleteGroceryFromShoppinglist(name);
-    };
 
-    public RecipeDTO getSingleRecipe(String recipeName){
+    public void addGroceryToShoppinglist(Grocery grocery) throws GroceryPlusException {
+        groceryPlusRepository.addGroceryToShoppinglist(grocery);
+    }
+
+    ;
+
+    public void clearShoppinglist() throws GroceryPlusException {
+        groceryPlusRepository.clearShoppinglist();
+    }
+
+    ;
+
+    public void deleteGroceryFromShoppinglist(String name) {
+        groceryPlusRepository.deleteGroceryFromShoppinglist(name);
+    }
+
+    ;
+
+    public RecipeDTO getSingleRecipe(String recipeName) {
         return groceryPlusRepository.getSingleRecipeDTO(recipeName);
     }
 
-    public List<RecipeDTO> getStandardList(){
+    public List<RecipeDTO> getStandardList() {
         return groceryPlusRepository.getStandardList();
     }
 
-    public List<RecipeDTO> getVeganList(){
+    public List<RecipeDTO> getVeganList() {
         return groceryPlusRepository.getVeganList();
     }
 
-    public List<RecipeDTO> getGlutenFreeList(){
+    public List<RecipeDTO> getGlutenFreeList() {
         return groceryPlusRepository.getGlutenFreeList();
     }
 
-    public void addRecipeToShoppingList(String recipeName){ groceryPlusRepository.addRecipeToShoppingList(recipeName);}
-}
+    public void addRecipeToShoppingList(String recipeName) {
+        groceryPlusRepository.addRecipeToShoppingList(recipeName);
+    }
+
+
+    }
+
