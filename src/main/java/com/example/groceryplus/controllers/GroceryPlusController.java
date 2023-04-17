@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("groceryplus")
+@RequestMapping("")
 public class GroceryPlusController {
     private GroceryPlusService groceryPlusService;
     private UserRepository userRepository;
@@ -29,8 +29,8 @@ public class GroceryPlusController {
     }
 
     @GetMapping("")
-    public String index() {
-        return "index";
+    public String index( HttpSession session) {
+        return isLoogedIn(session) ? "index" : "login";
     }
 
     @GetMapping("login")
@@ -50,7 +50,7 @@ public class GroceryPlusController {
                 // create session for user and set session timeout to 30 sec (container default: 15 min)
                 session.setAttribute("user", user);
                 session.setMaxInactiveInterval(30);
-                return  "redirect:/groceryplus/shopping_list";
+                return  "redirect:/";
             }
         // wrong credentials
         model.addAttribute("wrongCredentials", true);
@@ -97,27 +97,27 @@ public class GroceryPlusController {
     public String submitForm(@ModelAttribute("grocery") Grocery grocery) {
         System.out.println(grocery);
         groceryPlusService.addGrocery(grocery);
-        return "redirect:/groceryplus/all_groceries";
+        return "redirect:/all_groceries";
     }
 
     @PostMapping("add_grocery_to_shoppinglist")
     public String addGroceryToShoppinglist(@ModelAttribute("grocery") Grocery grocery) throws GroceryPlusException {
         System.out.println(grocery);
         groceryPlusService.addGroceryToShoppinglist(grocery);
-        return "redirect:/groceryplus/all_groceries";
+        return "redirect:/all_groceries";
     }
 
     @GetMapping("delete_grocery_from_shoppinglist/{name}")
     public String deleteGroceryFromShoppinglist(@PathVariable String name) throws GroceryPlusException {
         groceryPlusService.deleteGroceryFromShoppinglist(name);
-        return "redirect:/groceryplus/shopping_list";
+        return "redirect:/shopping_list";
     }
 
     @GetMapping("add_recipe_to_shoppingList/{recipeName}")
     public String addRecipeToShoppingList(@PathVariable String recipeName) throws GroceryPlusException {
         groceryPlusService.addRecipeToShoppingList(recipeName);
         System.out.println(recipeName);
-        return "redirect:/groceryplus/shopping_list";
+        return "redirect:/shopping_list";
     }
 
     @GetMapping("/shopping_list")
@@ -131,7 +131,7 @@ public class GroceryPlusController {
     @GetMapping("clear_shopping_list")
     public String clearShoppingList() throws GroceryPlusException {
         groceryPlusService.clearShoppinglist();
-        return "redirect:/groceryplus/shopping_list";
+        return "redirect:/shopping_list";
     }
 
 

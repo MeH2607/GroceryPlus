@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 1500px; /* Change this value to adjust the width */
+        }
+    </style>
+</head>
+<body style="background-color: #82ac85" ;>
+
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-1000">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card rounded-10">
+                    <div class="card-body p-4 " style="background-color: rgba(191,216,196,0.36)">
+                        <div class="row justify-content-center mb-3">
+                            <h1 class="text-center my-3 pb-3">Welocome to GroceryPlus!</h1>¨
+
+                            <div class="card-deck">
+                                <div class="card">
+                                    <img class="card-img-top" src="https://ih1.redbubble.net/image.4835560818.7870/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">All recipes</h5>
+                                        <p class="card-text"></p>
+                                        <div class="col-6 text-right">
+                                            <a class="btn btn-info" th:href="@{all_recipes}">View all recipes</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://ih1.redbubble.net/image.2242463052.8251/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Shopping list</h5>
+                                        <p class="card-text"></p>
+                                        <div class="col-6 text-right">
+                                            <a class="btn btn-info" th:href="@{shopping_list}">View shoppinglist</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img class="card-img-top" src="https://ih1.redbubble.net/image.905761182.7038/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">All groceries</h5>
+                                        <p class="card-text"></p>
+                                        <div class="col-12 text-right">
+                                            <a class="btn btn-info" th:href="@{all_groceries}">View all groceries</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+</body>
+</html>
