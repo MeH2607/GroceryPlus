@@ -74,7 +74,9 @@ public class GroceryPlusController {
 
     @GetMapping("all_recipes/{recipeName}")
     public String getSingleRecipe(@PathVariable String recipeName, Model model) {
+
         RecipeDTO recipe = groceryPlusService.getSingleRecipe(recipeName);
+
         model.addAttribute("recipe", recipe);
 
         return "single_Recipe";
@@ -84,10 +86,9 @@ public class GroceryPlusController {
     @GetMapping("all_groceries")
     public String allGroceries(Model model, HttpSession session) throws GroceryPlusException {
         Grocery grocery = new Grocery();
-        model.addAttribute("grocery", grocery);
 
+        model.addAttribute("grocery", grocery);
         List<Grocery> list = groceryPlusService.getAllGroceries();
-        System.out.println(list);
         model.addAttribute("list", list);
         return isLoogedIn(session) ? "all_groceries" : "login";
     }
@@ -108,7 +109,6 @@ public class GroceryPlusController {
 
     @GetMapping("delete_grocery_from_shoppinglist/{name}")
     public String deleteGroceryFromShoppinglist(@PathVariable String name) throws GroceryPlusException {
-        System.out.println(name);
         groceryPlusService.deleteGroceryFromShoppinglist(name);
         return "redirect:/groceryplus/shopping_list";
     }
