@@ -1,0 +1,18 @@
+Feasibility Study for Leverance:
+
+Teknisk mulighed:
+Baseret på kravene ser det ud til, at det tekniske aspekt af projektet er opnåeligt. Der er mange webbaserede databaseapplikationer tilgængelige, og moderne udviklingsværktøjer og -rammer kan bruges til at oprette en effektiv og skalerbar applikation. Den foreslåede GitHub-repository og dens deklarative workflows ved hjælp af GitHub Actions kan implementeres ved hjælp af moderne udviklingsværktøjer og -teknikker. Desuden virker MVP-kravene realistiske og opnåelige inden for den givne tidsramme.
+
+Økonomisk mulighed:
+Den økonomiske mulighed for projektet kan analyseres ved at overveje omkostningerne og fordelene. Omkostningerne ved udviklingen kan estimeres baseret på projektets krav, såsom udviklingsteamets størrelse, udviklingsværktøjer og infrastrukturkrav. På den anden side kan fordelene måles ved at analysere den potentielle indtjening genereret af applikationen. Da dette er et MVP, er indtjeningen sandsynligvis begrænset i de indledende faser. Imidlertid bør applikationens langsigtede potentiale for indtjeningsgenerering overvejes.
+
+Driftsmulighed:
+Driftsmuligheden for projektet kan analyseres ved at overveje applikationens brugervenlighed og brugeraccept. MVP-kravene virker rimelige og nyttige for de til tænkte brugere. Det er dog vigtigt at overveje brugerfeedback og brugertest for at sikre, at applikationen opfylder brugernes behov. Derudover bør udviklingsteamets evner evalueres for at sikre, at de har de nødvendige færdigheder til at udvikle applikationen.
+
+Lovmæssig mulighed:
+Lovmæssigheden af projektet kan analyseres ved at overveje de juridiske krav til udvikling og implementering af en webbaseret databaseapplikation. Teamet bør sikre, at de har de nødvendige licenser og tilladelser til at bruge eventuelle tredjepartsværktøjer eller -tjenester, der kræves for applikationen. Derudover skal applikationen overholde relevante databeskyttelses- og sikkerhedsregler.
+
+Tidsplan mulighed:
+Tidsplanens mulighed for projektet kan analyseres ved at overveje projektets tidsplan og udviklingsteamets kapacitet. MVP-kravene virker opnåelige inden for den givne tidsramme, men teamet bør sikre sig, at de har de nødvendige ressourcer og kapacitet til at levere projektet til tiden.
+
+Baseret på ovenstående analyse ser det ud til, at Leverance-projekt

@@ -105,6 +105,7 @@ public class GroceryPlusController {
         return "redirect:/groceryplus/all_groceries";
     }
 
+
     @GetMapping("delete_grocery_from_shoppinglist/{name}")
     public String deleteGroceryFromShoppinglist(@PathVariable String name) throws GroceryPlusException {
         System.out.println(name);
@@ -138,5 +139,7 @@ public class GroceryPlusController {
     public String addRecipe() {
         return "create_new_recipe";
     }
+
+
 
 }
