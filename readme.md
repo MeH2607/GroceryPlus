@@ -1,5 +1,7 @@
 Velkommen til Grocery Plus, hjemmesiden hvor du kan skrive og redigere dine indkøbslister samt opskrifter! Og ikke nok med det, når du har logget ind på siden, bliver dine lister og opskrifter også automatisk gemt, for at gøre livet nemmere for dig!
 
+Du kan tilgå GroceryPlus på https://groceryplus.onrender.com/ 
+
 Således navigerer du rundt.
 
 Når du logger ind, starter du på shopping list, som er en liste over alle de varer, du har sat på indkøbslisten.
